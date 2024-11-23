@@ -1,0 +1,3477 @@
+[33mcommit f34b14a8865cb5bd618cebd932adb7fdaaea8db3[m
+Author: udaykiran-java <udaykiranbadikalla1998@gmail.com>
+Date:   Fri Nov 22 18:31:33 2024 +0530
+
+    Crest Bank Backend Application
+
+[1mdiff --git a/.gitattributes b/.gitattributes[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3b41682[m
+[1m--- /dev/null[m
+[1m+++ b/.gitattributes[m
+[36m@@ -0,0 +1,2 @@[m
+[32m+[m[32m/mvnw text eol=lf[m
+[32m+[m[32m*.cmd text eol=crlf[m
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..549e00a[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,33 @@[m
+[32m+[m[32mHELP.md[m
+[32m+[m[32mtarget/[m
+[32m+[m[32m!.mvn/wrapper/maven-wrapper.jar[m
+[32m+[m[32m!**/src/main/**/target/[m
+[32m+[m[32m!**/src/test/**/target/[m
+[32m+[m
+[32m+[m[32m### STS ###[m
+[32m+[m[32m.apt_generated[m
+[32m+[m[32m.classpath[m
+[32m+[m[32m.factorypath[m
+[32m+[m[32m.project[m
+[32m+[m[32m.settings[m
+[32m+[m[32m.springBeans[m
+[32m+[m[32m.sts4-cache[m
+[32m+[m
+[32m+[m[32m### IntelliJ IDEA ###[m
+[32m+[m[32m.idea[m
+[32m+[m[32m*.iws[m
+[32m+[m[32m*.iml[m
+[32m+[m[32m*.ipr[m
+[32m+[m
+[32m+[m[32m### NetBeans ###[m
+[32m+[m[32m/nbproject/private/[m
+[32m+[m[32m/nbbuild/[m
+[32m+[m[32m/dist/[m
+[32m+[m[32m/nbdist/[m
+[32m+[m[32m/.nb-gradle/[m
+[32m+[m[32mbuild/[m
+[32m+[m[32m!**/src/main/**/build/[m
+[32m+[m[32m!**/src/test/**/build/[m
+[32m+[m
+[32m+[m[32m### VS Code ###[m
+[32m+[m[32m.vscode/[m
+[1mdiff --git a/.mvn/wrapper/maven-wrapper.properties b/.mvn/wrapper/maven-wrapper.properties[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fe9deed[m
+[1m--- /dev/null[m
+[1m+++ b/.mvn/wrapper/maven-wrapper.properties[m
+[36m@@ -0,0 +1,20 @@[m
+[32m+[m[32m# Licensed to the Apache Software Foundation (ASF) under one[m
+[32m+[m[32m# or more contributor license agreements.  See the NOTICE file[m
+[32m+[m[32m# distributed with this work for additional information[m
+[32m+[m[32m# regarding copyright ownership.  The ASF licenses this file[m
+[32m+[m[32m# to you under the Apache License, Version 2.0 (the[m
+[32m+[m[32m# "License"); you may not use this file except in compliance[m
+[32m+[m[32m# with the License.  You may obtain a copy of the License at[m
+[32m+[m[32m#[m
+[32m+[m[32m#   http://www.apache.org/licenses/LICENSE-2.0[m
+[32m+[m[32m#[m
+[32m+[m[32m# Unless required by applicable law or agreed to in writing,[m
+[32m+[m[32m# software distributed under the License is distributed on an[m
+[32m+[m[32m# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY[m
+[32m+[m[32m# KIND, either express or implied.  See the License for the[m
+[32m+[m[32m# specific language governing permissions and limitations[m
+[32m+[m[32m# under the License.[m
+[32m+[m[32mwrapperVersion=3.3.2[m
+[32m+[m[32mdistributionType=only-script[m
+[32m+[m[32mdistributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.9/apache-maven-3.9.9-bin.zip[m
+[32m+[m[32mdistributionSha256Sum=4ec3f26fb1a692473aea0235c300bd20f0f9fe741947c82c1234cefd76ac3a3c[m
+[1mdiff --git a/mvnw b/mvnw[m
+[1mnew file mode 100644[m
+[1mindex 0000000..19529dd[m
+[1m--- /dev/null[m
+[1m+++ b/mvnw[m
+[36m@@ -0,0 +1,259 @@[m
+[32m+[m[32m#!/bin/sh[m
+[32m+[m[32m# ----------------------------------------------------------------------------[m
+[32m+[m[32m# Licensed to the Apache Software Foundation (ASF) under one[m
+[32m+[m[32m# or more contributor license agreements.  See the NOTICE file[m
+[32m+[m[32m# distributed with this work for additional information[m
+[32m+[m[32m# regarding copyright ownership.  The ASF licenses this file[m
+[32m+[m[32m# to you under the Apache License, Version 2.0 (the[m
+[32m+[m[32m# "License"); you may not use this file except in compliance[m
+[32m+[m[32m# with the License.  You may obtain a copy of the License at[m
+[32m+[m[32m#[m
+[32m+[m[32m#    http://www.apache.org/licenses/LICENSE-2.0[m
+[32m+[m[32m#[m
+[32m+[m[32m# Unless required by applicable law or agreed to in writing,[m
+[32m+[m[32m# software distributed under the License is distributed on an[m
+[32m+[m[32m# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY[m
+[32m+[m[32m# KIND, either express or implied.  See the License for the[m
+[32m+[m[32m# specific language governing permissions and limitations[m
+[32m+[m[32m# under the License.[m
+[32m+[m[32m# ----------------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m# ----------------------------------------------------------------------------[m
+[32m+[m[32m# Apache Maven Wrapper startup batch script, version 3.3.2[m
+[32m+[m[32m#[m
+[32m+[m[32m# Optional ENV vars[m
+[32m+[m[32m# -----------------[m
+[32m+[m[32m#   JAVA_HOME - location of a JDK home dir, required when download maven via java source[m
+[32m+[m[32m#   MVNW_REPOURL - repo url base for downloading maven distribution[m
+[32m+[m[32m#   MVNW_USERNAME/MVNW_PASSWORD - user and password for downloading maven[m
+[32m+[m[32m#   MVNW_VERBOSE - true: enable verbose log; debug: trace the mvnw script; others: silence the output[m
+[32m+[m[32m# ----------------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32mset -euf[m
+[32m+[m[32m[ "${MVNW_VERBOSE-}" != debug ] || set -x[m
+[32m+[m
+[32m+[m[32m# OS specific support.[m
+[32m+[m[32mnative_path() { printf %s\\n "$1"; }[m
+[32m+[m[32mcase "$(uname)" in[m
+[32m+[m[32mCYGWIN* | MINGW*)[m
+[32m+[m[32m  [ -z "${JAVA_HOME-}" ] || JAVA_HOME="$(cygpath --unix "$JAVA_HOME")"[m
+[32m+[m[32m  native_path() { cygpath --path --windows "$1"; }[m
+[32m+[m[32m  ;;[m
+[32m+[m[32mesac[m
+[32m+[m
+[32m+[m[32m# set JAVACMD and JAVACCMD[m
+[32m+[m[32mset_java_home() {[m
+[32m+[m[32m  # For Cygwin and MinGW, ensure paths are in Unix format before anything is touched[m
+[32m+[m[32m  if [ -n "${JAVA_HOME-}" ]; then[m
+[32m+[m[32m    if [ -x "$JAVA_HOME/jre/sh/java" ]; then[m
+[32m+[m[32m      # IBM's JDK on AIX uses strange locations for the executables[m
+[32m+[m[32m      JAVACMD="$JAVA_HOME/jre/sh/java"[m
+[32m+[m[32m      JAVACCMD="$JAVA_HOME/jre/sh/javac"[m
+[32m+[m[32m    else[m
+[32m+[m[32m      JAVACMD="$JAVA_HOME/bin/java"[m
+[32m+[m[32m      JAVACCMD="$JAVA_HOME/bin/javac"[m
+[32m+[m
+[32m+[m[32m      if [ ! -x "$JAVACMD" ] || [ ! -x "$JAVACCMD" ]; then[m
+[32m+[m[32m        echo "The JAVA_HOME environment variable is not defined correctly, so mvnw cannot run." >&2[m
+[32m+[m[32m        echo "JAVA_HOME is set to \"$JAVA_HOME\", but \"\$JAVA_HOME/bin/java\" or \"\$JAVA_HOME/bin/javac\" does not exist." >&2[m
+[32m+[m[32m        return 1[m
+[32m+[m[32m      fi[m
+[32m+[m[32m    fi[m
+[32m+[m[32m  else[m
+[32m+[m[32m    JAVACMD="$([m
+[32m+[m[32m      'set' +e[m
+[32m+[m[32m      'unset' -f command 2>/dev/null[m
+[32m+[m[32m      'command' -v java[m
+[32m+[m[32m    )" || :[m
+[32m+[m[32m    JAVACCMD="$([m
+[32m+[m[32m      'set' +e[m
+[32m+[m[32m      'unset' -f command 2>/dev/null[m
+[32m+[m[32m      'command' -v javac[m
+[32m+[m[32m    )" || :[m
+[32m+[m
+[32m+[m[32m    if [ ! -x "${JAVACMD-}" ] || [ ! -x "${JAVACCMD-}" ]; then[m
+[32m+[m[32m      echo "The java/javac command does not exist in PATH nor is JAVA_HOME set, so mvnw cannot run." >&2[m
+[32m+[m[32m      return 1[m
+[32m+[m[32m    fi[m
+[32m+[m[32m  fi[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m# hash string like Java String::hashCode[m
+[32m+[m[32mhash_string() {[m
+[32m+[m[32m  str="${1:-}" h=0[m
+[32m+[m[32m  while [ -n "$str" ]; do[m
+[32m+[m[32m    char="${str%"${str#?}"}"[m
+[32m+[m[32m    h=$(((h * 31 + $(LC_CTYPE=C printf %d "'$char")) % 4294967296))[m
+[32m+[m[32m    str="${str#?}"[m
+[32m+[m[32m  done[m
+[32m+[m[32m  printf %x\\n $h[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mverbose() { :; }[m
+[32m+[m[32m[ "${MVNW_VERBOSE-}" != true ] || verbose() { printf %s\\n "${1-}"; }[m
+[32m+[m
+[32m+[m[32mdie() {[m
+[32m+[m[32m  printf %s\\n "$1" >&2[m
+[32m+[m[32m  exit 1[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mtrim() {[m
+[32m+[m[32m  # MWRAPPER-139:[m
+[32m+[m[32m  #   Trims trailing and leading whitespace, carriage returns, tabs, and linefeeds.[m
+[32m+[m[32m  #   Needed for removing poorly interpreted newline sequences when running in more[m
+[32m+[m[32m  #   exotic environments such as mingw bash on Windows.[m
+[32m+[m[32m  printf "%s" "${1}" | tr -d '[:space:]'[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m# parse distributionUrl and optional distributionSha256Sum, requires .mvn/wrapper/maven-wrapper.properties[m
+[32m+[m[32mwhile IFS="=" read -r key value; do[m
+[32m+[m[32m  case "${key-}" in[m
+[32m+[m[32m  distributionUrl) distributionUrl=$(trim "${value-}") ;;[m
+[32m+[m[32m  distributionSha256Sum) distributionSha256Sum=$(trim "${value-}") ;;[m
+[32m+[m[32m  esac[m
+[32m+[m[32mdone <"${0%/*}/.mvn/wrapper/maven-wrapper.properties"[m
+[32m+[m[32m[ -n "${distributionUrl-}" ] || die "cannot read distributionUrl property in ${0%/*}/.mvn/wrapper/maven-wrapper.properties"[m
+[32m+[m
+[32m+[m[32mcase "${distributionUrl##*/}" in[m
+[32m+[m[32mmaven-mvnd-*bin.*)[m
+[32m+[m[32m  MVN_CMD=mvnd.sh _MVNW_REPO_PATTERN=/maven/mvnd/[m
+[32m+[m[32m  case "${PROCESSOR_ARCHITECTURE-}${PROCESSOR_ARCHITEW6432-}:$(uname -a)" in[m
+[32m+[m[32m  *AMD64:CYGWIN* | *AMD64:MINGW*) distributionPlatform=windows-amd64 ;;[m
+[32m+[m[32m  :Darwin*x86_64) distributionPlatform=darwin-amd64 ;;[m
+[32m+[m[32m  :Darwin*arm64) distributionPlatform=darwin-aarch64 ;;[m
+[32m+[m[32m  :Linux*x86_64*) distributionPlatform=linux-amd64 ;;[m
+[32m+[m[32m  *)[m
+[32m+[m[32m    echo "Cannot detect native platform for mvnd on $(uname)-$(uname -m), use pure java version" >&2[m
+[32m+[m[32m    distributionPlatform=linux-amd64[m
+[32m+[m[32m    ;;[m
+[32m+[m[32m  esac[m
+[32m+[m[32m  distributionUrl="${distributionUrl%-bin.*}-$distributionPlatform.zip"[m
+[32m+[m[32m  ;;[m
+[32m+[m[32mmaven-mvnd-*) MVN_CMD=mvnd.sh _MVNW_REPO_PATTERN=/maven/mvnd/ ;;[m
+[32m+[m[32m*) MVN_CMD="mvn${0##*/mvnw}" _MVNW_REPO_PATTERN=/org/apache/maven/ ;;[m
+[32m+[m[32mesac[m
+[32m+[m
+[32m+[m[32m# apply MVNW_REPOURL and calculate MAVEN_HOME[m
+[32m+[m[32m# maven home pattern: ~/.m2/wrapper/dists/{apache-maven-<version>,maven-mvnd-<version>-<platform>}/<hash>[m
+[32m+[m[32m[ -z "${MVNW_REPOURL-}" ] || distributionUrl="$MVNW_REPOURL$_MVNW_REPO_PATTERN${distributionUrl#*"$_MVNW_REPO_PATTERN"}"[m
+[32m+[m[32mdistributionUrlName="${distributionUrl##*/}"[m
+[32m+[m[32mdistributionUrlNameMain="${distributionUrlName%.*}"[m
+[32m+[m[32mdistributionUrlNameMain="${distributionUrlNameMain%-bin}"[m
+[32m+[m[32mMAVEN_USER_HOME="${MAVEN_USER_HOME:-${HOME}/.m2}"[m
+[32m+[m[32mMAVEN_HOME="${MAVEN_USER_HOME}/wrapper/dists/${distributionUrlNameMain-}/$(hash_string "$distributionUrl")"[m
+[32m+[m
+[32m+[m[32mexec_maven() {[m
+[32m+[m[32m  unset MVNW_VERBOSE MVNW_USERNAME MVNW_PASSWORD MVNW_REPOURL || :[m
+[32m+[m[32m  exec "$MAVEN_HOME/bin/$MVN_CMD" "$@" || die "cannot exec $MAVEN_HOME/bin/$MVN_CMD"[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mif [ -d "$MAVEN_HOME" ]; then[m
+[32m+[m[32m  verbose "found existing MAVEN_HOME at $MAVEN_HOME"[m
+[32m+[m[32m  exec_maven "$@"[m
+[32m+[m[32mfi[m
+[32m+[m
+[32m+[m[32mcase "${distributionUrl-}" in[m
+[32m+[m[32m*?-bin.zip | *?maven-mvnd-?*-?*.zip) ;;[m
+[32m+[m[32m*) die "distributionUrl is not valid, must match *-bin.zip or maven-mvnd-*.zip, but found '${distributionUrl-}'" ;;[m
+[32m+[m[32mesac[m
+[32m+[m
+[32m+[m[32m# prepare tmp dir[m
+[32m+[m[32mif TMP_DOWNLOAD_DIR="$(mktemp -d)" && [ -d "$TMP_DOWNLOAD_DIR" ]; then[m
+[32m+[m[32m  clean() { rm -rf -- "$TMP_DOWNLOAD_DIR"; }[m
+[32m+[m[32m  trap clean HUP INT TERM EXIT[m
+[32m+[m[32melse[m
+[32m+[m[32m  die "cannot create temp dir"[m
+[32m+[m[32mfi[m
+[32m+[m
+[32m+[m[32mmkdir -p -- "${MAVEN_HOME%/*}"[m
+[32m+[m
+[32m+[m[32m# Download and Install Apache Maven[m
+[32m+[m[32mverbose "Couldn't find MAVEN_HOME, downloading and installing it ..."[m
+[32m+[m[32mverbose "Downloading from: $distributionUrl"[m
+[32m+[m[32mverbose "Downloading to: $TMP_DOWNLOAD_DIR/$distributionUrlName"[m
+[32m+[m
+[32m+[m[32m# select .zip or .tar.gz[m
+[32m+[m[32mif ! command -v unzip >/dev/null; then[m
+[32m+[m[32m  distributionUrl="${distributionUrl%.zip}.tar.gz"[m
+[32m+[m[32m  distributionUrlName="${distributionUrl##*/}"[m
+[32m+[m[32mfi[m
+[32m+[m
+[32m+[m[32m# verbose opt[m
+[32m+[m[32m__MVNW_QUIET_WGET=--quiet __MVNW_QUIET_CURL=--silent __MVNW_QUIET_UNZIP=-q __MVNW_QUIET_TAR=''[m
+[32m+[m[32m[ "${MVNW_VERBOSE-}" != true ] || __MVNW_QUIET_WGET='' __MVNW_QUIET_CURL='' __MVNW_QUIET_UNZIP='' __MVNW_QUIET_TAR=v[m
+[32m+[m
+[32m+[m[32m# normalize http auth[m
+[32m+[m[32mcase "${MVNW_PASSWORD:+has-password}" in[m
+[32m+[m[32m'') MVNW_USERNAME='' MVNW_PASSWORD='' ;;[m
+[32m+[m[32mhas-password) [ -n "${MVNW_USERNAME-}" ] || MVNW_USERNAME='' MVNW_PASSWORD='' ;;[m
+[32m+[m[32mesac[m
+[32m+[m
+[32m+[m[32mif [ -z "${MVNW_USERNAME-}" ] && command -v wget >/dev/null; then[m
+[32m+[m[32m  verbose "Found wget ... using wget"[m
+[32m+[m[32m  wget ${__MVNW_QUIET_WGET:+"$__MVNW_QUIET_WGET"} "$distributionUrl" -O "$TMP_DOWNLOAD_DIR/$distributionUrlName" || die "wget: Failed to fetch $distributionUrl"[m
+[32m+[m[32melif [ -z "${MVNW_USERNAME-}" ] && command -v curl >/dev/null; then[m
+[32m+[m[32m  verbose "Found curl ... using curl"[m
+[32m+[m[32m  curl ${__MVNW_QUIET_CURL:+"$__MVNW_QUIET_CURL"} -f -L -o "$TMP_DOWNLOAD_DIR/$distributionUrlName" "$distributionUrl" || die "curl: Failed to fetch $distributionUrl"[m
+[32m+[m[32melif set_java_home; then[m
+[32m+[m[32m  verbose "Falling back to use Java to download"[m
+[32m+[m[32m  javaSource="$TMP_DOWNLOAD_DIR/Downloader.java"[m
+[32m+[m[32m  targetZip="$TMP_DOWNLOAD_DIR/$distributionUrlName"[m
+[32m+[m[32m  cat >"$javaSource" <<-END[m
+[32m+[m	[32mpublic class Downloader extends java.net.Authenticator[m
+[32m+[m	[32m{[m
+[32m+[m	[32m  protected java.net.PasswordAuthentication getPasswordAuthentication()[m
+[32m+[m	[32m  {[m
+[32m+[m	[32m    return new java.net.PasswordAuthentication( System.getenv( "MVNW_USERNAME" ), System.getenv( "MVNW_PASSWORD" ).toCharArray() );[m
+[32m+[m	[32m  }[m
+[32m+[m	[32m  public static void main( String[] args ) throws Exception[m
+[32m+[m	[32m  {[m
+[32m+[m	[32m    setDefault( new Downloader() );[m
+[32m+[m	[32m    java.nio.file.Files.copy( java.net.URI.create( args[0] ).toURL().openStream(), java.nio.file.Paths.get( args[1] ).toAbsolutePath().normalize() );[m
+[32m+[m	[32m  }[m
+[32m+[m	[32m}[m
+[32m+[m	[32mEND[m
+[32m+[m[32m  # For Cygwin/MinGW, switch paths to Windows format before running javac and java[m
+[32m+[m[32m  verbose " - Compiling Downloader.java ..."[m
+[32m+[m[32m  "$(native_path "$JAVACCMD")" "$(native_path "$javaSource")" || die "Failed to compile Downloader.java"[m
+[32m+[m[32m  verbose " - Running Downloader.java ..."[m
+[32m+[m[32m  "$(native_path "$JAVACMD")" -cp "$(native_path "$TMP_DOWNLOAD_DIR")" Downloader "$distributionUrl" "$(native_path "$targetZip")"[m
+[32m+[m[32mfi[m
+[32m+[m
+[32m+[m[32m# If specified, validate the SHA-256 sum of the Maven distribution zip file[m
+[32m+[m[32mif [ -n "${distributionSha256Sum-}" ]; then[m
+[32m+[m[32m  distributionSha256Result=false[m
+[32m+[m[32m  if [ "$MVN_CMD" = mvnd.sh ]; then[m
+[32m+[m[32m    echo "Checksum validation is not supported for maven-mvnd." >&2[m
+[32m+[m[32m    echo "Please disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties." >&2[m
+[32m+[m[32m    exit 1[m
+[32m+[m[32m  elif command -v sha256sum >/dev/null; then[m
+[32m+[m[32m    if echo "$distributionSha256Sum  $TMP_DOWNLOAD_DIR/$distributionUrlName" | sha256sum -c >/dev/null 2>&1; then[m
+[32m+[m[32m      distributionSha256Result=true[m
+[32m+[m[32m    fi[m
+[32m+[m[32m  elif command -v shasum >/dev/null; then[m
+[32m+[m[32m    if echo "$distributionSha256Sum  $TMP_DOWNLOAD_DIR/$distributionUrlName" | shasum -a 256 -c >/dev/null 2>&1; then[m
+[32m+[m[32m      distributionSha256Result=true[m
+[32m+[m[32m    fi[m
+[32m+[m[32m  else[m
+[32m+[m[32m    echo "Checksum validation was requested but neither 'sha256sum' or 'shasum' are available." >&2[m
+[32m+[m[32m    echo "Please install either command, or disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties." >&2[m
+[32m+[m[32m    exit 1[m
+[32m+[m[32m  fi[m
+[32m+[m[32m  if [ $distributionSha256Result = false ]; then[m
+[32m+[m[32m    echo "Error: Failed to validate Maven distribution SHA-256, your Maven distribution might be compromised." >&2[m
+[32m+[m[32m    echo "If you updated your Maven version, you need to update the specified distributionSha256Sum property." >&2[m
+[32m+[m[32m    exit 1[m
+[32m+[m[32m  fi[m
+[32m+[m[32mfi[m
+[32m+[m
+[32m+[m[32m# unzip and move[m
+[32m+[m[32mif command -v unzip >/dev/null; then[m
+[32m+[m[32m  unzip ${__MVNW_QUIET_UNZIP:+"$__MVNW_QUIET_UNZIP"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -d "$TMP_DOWNLOAD_DIR" || die "failed to unzip"[m
+[32m+[m[32melse[m
+[32m+[m[32m  tar xzf${__MVNW_QUIET_TAR:+"$__MVNW_QUIET_TAR"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -C "$TMP_DOWNLOAD_DIR" || die "failed to untar"[m
+[32m+[m[32mfi[m
+[32m+[m[32mprintf %s\\n "$distributionUrl" >"$TMP_DOWNLOAD_DIR/$distributionUrlNameMain/mvnw.url"[m
+[32m+[m[32mmv -- "$TMP_DOWNLOAD_DIR/$distributionUrlNameMain" "$MAVEN_HOME" || [ -d "$MAVEN_HOME" ] || die "fail to move MAVEN_HOME"[m
+[32m+[m
+[32m+[m[32mclean || :[m
+[32m+[m[32mexec_maven "$@"[m
+[1mdiff --git a/mvnw.cmd b/mvnw.cmd[m
+[1mnew file mode 100644[m
+[1mindex 0000000..249bdf3[m
+[1m--- /dev/null[m
+[1m+++ b/mvnw.cmd[m
+[36m@@ -0,0 +1,149 @@[m
+[32m+[m[32m<# : batch portion[m
+[32m+[m[32m@REM ----------------------------------------------------------------------------[m
+[32m+[m[32m@REM Licensed to the Apache Software Foundation (ASF) under one[m
+[32m+[m[32m@REM or more contributor license agreements.  See the NOTICE file[m
+[32m+[m[32m@REM distributed with this work for additional information[m
+[32m+[m[32m@REM regarding copyright ownership.  The ASF licenses this file[m
+[32m+[m[32m@REM to you under the Apache License, Version 2.0 (the[m
+[32m+[m[32m@REM "License"); you may not use this file except in compliance[m
+[32m+[m[32m@REM with the License.  You may obtain a copy of the License at[m
+[32m+[m[32m@REM[m
+[32m+[m[32m@REM    http://www.apache.org/licenses/LICENSE-2.0[m
+[32m+[m[32m@REM[m
+[32m+[m[32m@REM Unless required by applicable law or agreed to in writing,[m
+[32m+[m[32m@REM software distributed under the License is distributed on an[m
+[32m+[m[32m@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY[m
+[32m+[m[32m@REM KIND, either express or implied.  See the License for the[m
+[32m+[m[32m@REM specific language governing permissions and limitations[m
+[32m+[m[32m@REM under the License.[m
+[32m+[m[32m@REM ----------------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m@REM ----------------------------------------------------------------------------[m
+[32m+[m[32m@REM Apache Maven Wrapper startup batch script, version 3.3.2[m
+[32m+[m[32m@REM[m
+[32m+[m[32m@REM Optional ENV vars[m
+[32m+[m[32m@REM   MVNW_REPOURL - repo url base for downloading maven distribution[m
+[32m+[m[32m@REM   MVNW_USERNAME/MVNW_PASSWORD - user and password for downloading maven[m
+[32m+[m[32m@REM   MVNW_VERBOSE - true: enable verbose log; others: silence the output[m
+[32m+[m[32m@REM ----------------------------------------------------------------------------[m
+[32m+[m
+[32m+[m[32m@IF "%__MVNW_ARG0_NAME__%"=="" (SET __MVNW_ARG0_NAME__=%~nx0)[m
+[32m+[m[32m@SET __MVNW_CMD__=[m
+[32m+[m[32m@SET __MVNW_ERROR__=[m
+[32m+[m[32m@SET __MVNW_PSMODULEP_SAVE=%PSModulePath%[m
+[32m+[m[32m@SET PSModulePath=[m
+[32m+[m[32m@FOR /F "usebackq tokens=1* delims==" %%A IN (`powershell -noprofile "& {$scriptDir='%~dp0'; $script='%__MVNW_ARG0_NAME__%'; icm -ScriptBlock ([Scriptblock]::Create((Get-Content -Raw '%~f0'))) -NoNewScope}"`) DO @([m
+[32m+[m[32m  IF "%%A"=="MVN_CMD" (set __MVNW_CMD__=%%B) ELSE IF "%%B"=="" (echo %%A) ELSE (echo %%A=%%B)[m
+[32m+[m[32m)[m
+[32m+[m[32m@SET PSModulePath=%__MVNW_PSMODULEP_SAVE%[m
+[32m+[m[32m@SET __MVNW_PSMODULEP_SAVE=[m
+[32m+[m[32m@SET __MVNW_ARG0_NAME__=[m
+[32m+[m[32m@SET MVNW_USERNAME=[m
+[32m+[m[32m@SET MVNW_PASSWORD=[m
+[32m+[m[32m@IF NOT "%__MVNW_CMD__%"=="" (%__MVNW_CMD__% %*)[m
+[32m+[m[32m@echo Cannot start maven from wrapper >&2 && exit /b 1[m
+[32m+[m[32m@GOTO :EOF[m
+[32m+[m[32m: end batch / begin powershell #>[m
+[32m+[m
+[32m+[m[32m$ErrorActionPreference = "Stop"[m
+[32m+[m[32mif ($env:MVNW_VERBOSE -eq "true") {[m
+[32m+[m[32m  $VerbosePreference = "Continue"[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m# calculate distributionUrl, requires .mvn/wrapper/maven-wrapper.properties[m
+[32m+[m[32m$distributionUrl = (Get-Content -Raw "$scriptDir/.mvn/wrapper/maven-wrapper.properties" | ConvertFrom-StringData).distributionUrl[m
+[32m+[m[32mif (!$distributionUrl) {[m
+[32m+[m[32m  Write-Error "cannot read distributionUrl property in $scriptDir/.mvn/wrapper/maven-wrapper.properties"[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mswitch -wildcard -casesensitive ( $($distributionUrl -replace '^.*/','') ) {[m
+[32m+[m[32m  "maven-mvnd-*" {[m
+[32m+[m[32m    $USE_MVND = $true[m
+[32m+[m[32m    $distributionUrl = $distributionUrl -replace '-bin\.[^.]*$',"-windows-amd64.zip"[m
+[32m+[m[32m    $MVN_CMD = "mvnd.cmd"[m
+[32m+[m[32m    break[m
+[32m+[m[32m  }[m
+[32m+[m[32m  default {[m
+[32m+[m[32m    $USE_MVND = $false[m
+[32m+[m[32m    $MVN_CMD = $script -replace '^mvnw','mvn'[m
+[32m+[m[32m    break[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m# apply MVNW_REPOURL and calculate MAVEN_HOME[m
+[32m+[m[32m# maven home pattern: ~/.m2/wrapper/dists/{apache-maven-<version>,maven-mvnd-<version>-<platform>}/<hash>[m
+[32m+[m[32mif ($env:MVNW_REPOURL) {[m
+[32m+[m[32m  $MVNW_REPO_PATTERN = if ($USE_MVND) { "/org/apache/maven/" } else { "/maven/mvnd/" }[m
+[32m+[m[32m  $distributionUrl = "$env:MVNW_REPOURL$MVNW_REPO_PATTERN$($distributionUrl -replace '^.*'+$MVNW_REPO_PATTERN,'')"[m
+[32m+[m[32m}[m
+[32m+[m[32m$distributionUrlName = $distributionUrl -replace '^.*/',''[m
+[32m+[m[32m$distributionUrlNameMain = $distributionUrlName -replace '\.[^.]*$','' -replace '-bin$',''[m
+[32m+[m[32m$MAVEN_HOME_PARENT = "$HOME/.m2/wrapper/dists/$distributionUrlNameMain"[m
+[32m+[m[32mif ($env:MAVEN_USER_HOME) {[m
+[32m+[m[32m  $MAVEN_HOME_PARENT = "$env:MAVEN_USER_HOME/wrapper/dists/$distributionUrlNameMain"[m
+[32m+[m[32m}[m
+[32m+[m[32m$MAVEN_HOME_NAME = ([System.Security.Cryptography.MD5]::Create().ComputeHash([byte[]][char[]]$distributionUrl) | ForEach-Object {$_.ToString("x2")}) -join ''[m
+[32m+[m[32m$MAVEN_HOME = "$MAVEN_HOME_PARENT/$MAVEN_HOME_NAME"[m
+[32m+[m
+[32m+[m[32mif (Test-Path -Path "$MAVEN_HOME" -PathType Container) {[m
+[32m+[m[32m  Write-Verbose "found existing MAVEN_HOME at $MAVEN_HOME"[m
+[32m+[m[32m  Write-Output "MVN_CMD=$MAVEN_HOME/bin/$MVN_CMD"[m
+[32m+[m[32m  exit $?[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mif (! $distributionUrlNameMain -or ($distributionUrlName -eq $distributionUrlNameMain)) {[m
+[32m+[m[32m  Write-Error "distributionUrl is not valid, must end with *-bin.zip, but found $distributionUrl"[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m# prepare tmp dir[m
+[32m+[m[32m$TMP_DOWNLOAD_DIR_HOLDER = New-TemporaryFile[m
+[32m+[m[32m$TMP_DOWNLOAD_DIR = New-Item -Itemtype Directory -Path "$TMP_DOWNLOAD_DIR_HOLDER.dir"[m
+[32m+[m[32m$TMP_DOWNLOAD_DIR_HOLDER.Delete() | Out-Null[m
+[32m+[m[32mtrap {[m
+[32m+[m[32m  if ($TMP_DOWNLOAD_DIR.Exists) {[m
+[32m+[m[32m    try { Remove-Item $TMP_DOWNLOAD_DIR -Recurse -Force | Out-Null }[m
+[32m+[m[32m    catch { Write-Warning "Cannot remove $TMP_DOWNLOAD_DIR" }[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mNew-Item -Itemtype Directory -Path "$MAVEN_HOME_PARENT" -Force | Out-Null[m
+[32m+[m
+[32m+[m[32m# Download and Install Apache Maven[m
+[32m+[m[32mWrite-Verbose "Couldn't find MAVEN_HOME, downloading and installing it ..."[m
+[32m+[m[32mWrite-Verbose "Downloading from: $distributionUrl"[m
+[32m+[m[32mWrite-Verbose "Downloading to: $TMP_DOWNLOAD_DIR/$distributionUrlName"[m
+[32m+[m
+[32m+[m[32m$webclient = New-Object System.Net.WebClient[m
+[32m+[m[32mif ($env:MVNW_USERNAME -and $env:MVNW_PASSWORD) {[m
+[32m+[m[32m  $webclient.Credentials = New-Object System.Net.NetworkCredential($env:MVNW_USERNAME, $env:MVNW_PASSWORD)[m
+[32m+[m[32m}[m
+[32m+[m[32m[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12[m
+[32m+[m[32m$webclient.DownloadFile($distributionUrl, "$TMP_DOWNLOAD_DIR/$distributionUrlName") | Out-Null[m
+[32m+[m
+[32m+[m[32m# If specified, validate the SHA-256 sum of the Maven distribution zip file[m
+[32m+[m[32m$distributionSha256Sum = (Get-Content -Raw "$scriptDir/.mvn/wrapper/maven-wrapper.properties" | ConvertFrom-StringData).distributionSha256Sum[m
+[32m+[m[32mif ($distributionSha256Sum) {[m
+[32m+[m[32m  if ($USE_MVND) {[m
+[32m+[m[32m    Write-Error "Checksum validation is not supported for maven-mvnd. `nPlease disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties."[m
+[32m+[m[32m  }[m
+[32m+[m[32m  Import-Module $PSHOME\Modules\Microsoft.PowerShell.Utility -Function Get-FileHash[m
+[32m+[m[32m  if ((Get-FileHash "$TMP_DOWNLOAD_DIR/$distributionUrlName" -Algorithm SHA256).Hash.ToLower() -ne $distributionSha256Sum) {[m
+[32m+[m[32m    Write-Error "Error: Failed to validate Maven distribution SHA-256, your Maven distribution might be compromised. If you updated your Maven version, you need to update the specified distributionSha256Sum property."[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m# unzip and move[m
+[32m+[m[32mExpand-Archive "$TMP_DOWNLOAD_DIR/$distributionUrlName" -DestinationPath "$TMP_DOWNLOAD_DIR" | Out-Null[m
+[32m+[m[32mRename-Item -Path "$TMP_DOWNLOAD_DIR/$distributionUrlNameMain" -NewName $MAVEN_HOME_NAME | Out-Null[m
+[32m+[m[32mtry {[m
+[32m+[m[32m  Move-Item -Path "$TMP_DOWNLOAD_DIR/$MAVEN_HOME_NAME" -Destination $MAVEN_HOME_PARENT | Out-Null[m
+[32m+[m[32m} catch {[m
+[32m+[m[32m  if (! (Test-Path -Path "$MAVEN_HOME" -PathType Container)) {[m
+[32m+[m[32m    Write-Error "fail to move MAVEN_HOME"[m
+[32m+[m[32m  }[m
+[32m+[m[32m} finally {[m
+[32m+[m[32m  try { Remove-Item $TMP_DOWNLOAD_DIR -Recurse -Force | Out-Null }[m
+[32m+[m[32m  catch { Write-Warning "Cannot remove $TMP_DOWNLOAD_DIR" }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mWrite-Output "MVN_CMD=$MAVEN_HOME/bin/$MVN_CMD"[m
+[1mdiff --git a/pom.xml b/pom.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..07cab50[m
+[1m--- /dev/null[m
+[1m+++ b/pom.xml[m
+[36m@@ -0,0 +1,99 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"[m
+[32m+[m	[32mxsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">[m
+[32m+[m	[32m<modelVersion>4.0.0</modelVersion>[m
+[32m+[m	[32m<parent>[m
+[32m+[m		[32m<groupId>org.springframework.boot</groupId>[m
+[32m+[m		[32m<artifactId>spring-boot-starter-parent</artifactId>[m
+[32m+[m		[32m<version>3.3.4</version>[m
+[32m+[m		[32m<relativePath/> <!-- lookup parent from repository -->[m
+[32m+[m	[32m</parent>[m
+[32m+[m	[32m<groupId>com.uday</groupId>[m
+[32m+[m	[32m<artifactId>bank-application</artifactId>[m
+[32m+[m	[32m<version>0.0.1-SNAPSHOT</version>[m
+[32m+[m	[32m<name>bank-application</name>[m
+[32m+[m	[32m<description>project for Spring Boot web application2</description>[m
+[32m+[m	[32m<url/>[m
+[32m+[m	[32m<licenses>[m
+[32m+[m		[32m<license/>[m
+[32m+[m	[32m</licenses>[m
+[32m+[m	[32m<developers>[m
+[32m+[m		[32m<developer/>[m
+[32m+[m	[32m</developers>[m
+[32m+[m	[32m<scm>[m
+[32m+[m		[32m<connection/>[m
+[32m+[m		[32m<developerConnection/>[m
+[32m+[m		[32m<tag/>[m
+[32m+[m		[32m<url/>[m
+[32m+[m	[32m</scm>[m
+[32m+[m	[32m<properties>[m
+[32m+[m		[32m<java.version>17</java.version>[m
+[32m+[m		[32m<spring-cloud.version>2023.0.3</spring-cloud.version>[m
+[32m+[m	[32m</properties>[m
+[32m+[m	[32m<dependencies>[m
+[32m+[m		[32m<dependency>[m
+[32m+[m			[32m<groupId>org.springframework.boot</groupId>[m
+[32m+[m			[32m<artifactId>spring-boot-starter-data-jpa</artifactId>[m
+[32m+[m		[32m</dependency>[m
+[32m+[m		[32m<dependency>[m
+[32m+[m			[32m<groupId>org.springframework.boot</groupId>[m
+[32m+[m			[32m<artifactId>spring-boot-starter-web</artifactId>[m
+[32m+[m		[32m</dependency>[m
+[32m+[m		[32m<dependency>[m
+[32m+[m			[32m<groupId>org.springframework.boot</groupId>[m
+[32m+[m			[32m<artifactId>spring-boot-devtools</artifactId>[m
+[32m+[m			[32m<scope>runtime</scope>[m
+[32m+[m			[32m<optional>true</optional>[m
+[32m+[m		[32m</dependency>[m
+[32m+[m		[32m<dependency>[m
+[32m+[m			[32m<groupId>com.mysql</groupId>[m
+[32m+[m			[32m<artifactId>mysql-connector-j</artifactId>[m
+[32m+[m			[32m<scope>runtime</scope>[m
+[32m+[m		[32m</dependency>[m
+[32m+[m		[32m<dependency>[m
+[32m+[m			[32m<groupId>org.springframework.boot</groupId>[m
+[32m+[m			[32m<artifactId>spring-boot-starter-test</artifactId>[m
+[32m+[m			[32m<scope>test</scope>[m
+[32m+[m		[32m</dependency>[m
+[32m+[m		[32m<dependency>[m
+[32m+[m[32m           <groupId>org.springframework.boot</groupId>[m
+[32m+[m[32m           <artifactId>spring-boot-starter-mail</artifactId>[m
+[32m+[m[32m        </dependency>[m
+[32m+[m[32m     <!-- https://mvnrepository.com/artifact/com.twilio.sdk/twilio -->[m
+[32m+[m[32m<dependency>[m
+[32m+[m[32m    <groupId>com.twilio.sdk</groupId>[m
+[32m+[m[32m    <artifactId>twilio</artifactId>[m
+[32m+[m[32m    <version>10.4.1</version>[m
+[32m+[m[32m</dependency>[m
+[32m+[m[32m<!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core -->[m
+[32m+[m[32m<dependency>[m
+[32m+[m[32m    <groupId>com.itextpdf</groupId>[m
+[32m+[m[32m    <artifactId>itext7-core</artifactId>[m
+[32m+[m[32m    <version>8.0.5</version>[m
+[32m+[m[32m    <type>pom</type>[m
+[32m+[m[32m</dependency>[m
+[32m+[m
+[32m+[m
+[32m+[m	[32m</dependencies>[m
+[32m+[m	[32m<dependencyManagement>[m
+[32m+[m		[32m<dependencies>[m
+[32m+[m			[32m<dependency>[m
+[32m+[m				[32m<groupId>org.springframework.cloud</groupId>[m
+[32m+[m				[32m<artifactId>spring-cloud-dependencies</artifactId>[m
+[32m+[m				[32m<version>${spring-cloud.version}</version>[m
+[32m+[m				[32m<type>pom</type>[m
+[32m+[m				[32m<scope>import</scope>[m
+[32m+[m			[32m</dependency>[m
+[32m+[m		[32m</dependencies>[m
+[32m+[m	[32m</dependencyManagement>[m
+[32m+[m
+[32m+[m	[32m<build>[m
+[32m+[m		[32m<plugins>[m
+[32m+[m			[32m<plugin>[m
+[32m+[m				[32m<groupId>org.springframework.boot</groupId>[m
+[32m+[m				[32m<artifactId>spring-boot-maven-plugin</artifactId>[m
+[32m+[m			[32m</plugin>[m
+[32m+[m		[32m</plugins>[m
+[32m+[m	[32m</build>[m
+[32m+[m
+[32m+[m[32m</project>[m
+[1mdiff --git a/src/main/java/com/uday/BankApplication.java b/src/main/java/com/uday/BankApplication.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..36fbb52[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/BankApplication.java[m
+[36m@@ -0,0 +1,13 @@[m
+[32m+[m[32mpackage com.uday;[m
+[32m+[m
+[32m+[m[32mimport org.springframework.boot.SpringApplication;[m
+[32m+[m[32mimport org.springframework.boot.autoconfigure.SpringBootApplication;[m
+[32m+[m
+[32m+[m[32m@SpringBootApplication[m
+[32m+[m[32mpublic class BankApplication {[m
+[32m+[m
+[32m+[m	[32mpublic static void main(String[] args) {[m
+[32m+[m		[32mSpringApplication.run(BankApplication.class, args);[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/controller/BankController.java b/src/main/java/com/uday/controller/BankController.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..7c9e97c[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/controller/BankController.java[m
+[36m@@ -0,0 +1,200 @@[m
+[32m+[m[32mpackage com.uday.controller;[m
+[32m+[m
+[32m+[m[32mimport java.util.List;[m
+[32m+[m
+[32m+[m[32mimport org.springframework.beans.factory.annotation.Autowired;[m
+[32m+[m[32mimport org.springframework.http.ResponseEntity;[m
+[32m+[m[32mimport org.springframework.web.bind.annotation.CrossOrigin;[m
+[32m+[m[32mimport org.springframework.web.bind.annotation.GetMapping;[m
+[32m+[m[32mimport org.springframework.web.bind.annotation.PathVariable;[m
+[32m+[m[32mimport org.springframework.web.bind.annotation.PostMapping;[m
+[32m+[m[32mimport org.springframework.web.bind.annotation.RequestBody;[m
+[32m+[m[32mimport org.springframework.web.bind.annotation.RequestParam;[m
+[32m+[m[32mimport org.springframework.web.bind.annotation.RestController;[m
+[32m+[m
+[32m+[m[32mimport com.uday.dto.ApplyATM;[m
+[32m+[m[32mimport com.uday.dto.AtmTransactions;[m
+[32m+[m[32mimport com.uday.dto.BalanceEnquireATM;[m
+[32m+[m[32mimport com.uday.dto.CancleATM;[m
+[32m+[m[32mimport com.uday.dto.CheckBalance;[m
+[32m+[m[32mimport com.uday.dto.MiniStatementATM;[m
+[32m+[m[32mimport com.uday.dto.SetAtmPin;[m
+[32m+[m[32mimport com.uday.dto.Statement;[m
+[32m+[m[32mimport com.uday.dto.TransferAmount;[m
+[32m+[m[32mimport com.uday.dto.TransferByATM;[m
+[32m+[m[32mimport com.uday.dto.UpdateAccount;[m
+[32m+[m[32mimport com.uday.model.Bank;[m
+[32m+[m[32mimport com.uday.service.BankService;[m
+[32m+[m
+[32m+[m[32m@CrossOrigin(origins = "http://localhost:5173")[m
+[32m+[m[32m@RestController[m
+[32m+[m[32mpublic class BankController {[m
+[32m+[m
+[32m+[m	[32m @Autowired[m
+[32m+[m	[32m    private BankService bankService;[m
+[32m+[m
+[32m+[m	[32m    // EndPoint to create a new bank account[m
+[32m+[m[41m	 [m
+[32m+[m	[32m    @PostMapping("/register")[m
+[32m+[m	[32m    public ResponseEntity<?> createBankAccount(@RequestBody Bank bank) {[m
+[32m+[m	[32m        try {[m
+[32m+[m	[32m            Bank createdBank = bankService.createBankAccount(bank);[m
+[32m+[m	[32m            return ResponseEntity.ok(createdBank);[m
+[32m+[m	[32m        } catch (IllegalArgumentException e) {[m
+[32m+[m	[32m            return ResponseEntity.badRequest().body(e.getMessage());[m
+[32m+[m	[32m        }[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    // End Point to get one one account holder[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @GetMapping("/getone/{acno}")[m
+[32m+[m	[32m    public Bank getOneAccountHolder(@PathVariable long acno) {[m
+[32m+[m[41m	    	[m
+[32m+[m	[41m    [m	[32mreturn bankService.getOneHolder(acno);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    // End Point to get one one account holder[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @GetMapping("/getall")[m
+[32m+[m	[32m    public List<Bank> getAllAccountHolders() {[m
+[32m+[m[41m	    	[m
+[32m+[m	[41m    [m	[32mreturn bankService.getAllAccountHolders();[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m // end point for withdraw amount[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/withdraw")[m
+[32m+[m	[32m    public String withdraw(@RequestBody Bank bank) {[m
+[32m+[m	[41m    [m	[32mreturn bankService.withdraw(bank);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m // end point for deposit amount[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/deposit")[m
+[32m+[m	[32m    public String deposit(@RequestBody Bank bank) {[m
+[32m+[m	[41m    [m	[32mreturn bankService.deposit(bank);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m // end point for check-balance[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/checkbalance")[m
+[32m+[m	[32m    public String checkBalence(@RequestBody CheckBalance balance) {[m
+[32m+[m	[41m    [m	[32mreturn bankService.balanceEnquire(balance);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    // end point for transfer amount[m[41m [m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/transfer")[m
+[32m+[m	[32m    public String transferAmount(@RequestBody TransferAmount transfer) {[m
+[32m+[m[41m	    	[m
+[32m+[m	[41m    [m	[32mreturn bankService.transferMoney(transfer);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    // end point for get statement[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/statement")[m
+[32m+[m	[32m    public void getStatement(@RequestBody Statement statement){[m
+[32m+[m	[41m    [m	[32m bankService.transactionStatement(statement);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m[41m	    [m
+[32m+[m	[32m    // end point for get statement[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/ministatement")[m
+[32m+[m	[32m    public void getMiniStatement(@RequestBody Statement statement){[m
+[32m+[m	[41m    [m	[32m bankService.generateMiniStatement(statement);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    // end point for update account[m[41m [m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/update")[m
+[32m+[m	[32m    public Bank updateAccount(@RequestBody UpdateAccount update) {[m
+[32m+[m	[41m    [m	[32mreturn bankService.updateAccount(update);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    // end point for apply ATM[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/applyatm")[m
+[32m+[m	[32m    public Bank applyAtm(@RequestBody ApplyATM apply) {[m
+[32m+[m[41m	    	[m
+[32m+[m	[41m    [m	[32mreturn bankService.applyForAtm(apply);[m
+[32m+[m[41m	    	[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m[41m	    [m
+[32m+[m	[32m // end point for Cancel ATM[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/cancelatm")[m
+[32m+[m	[32m    public Bank cancelAtm(@RequestBody CancleATM apply) {[m
+[32m+[m[41m	    	[m
+[32m+[m	[41m    [m	[32mreturn bankService.cancelAtm(apply);[m
+[32m+[m[41m	    	[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/send-otp")[m
+[32m+[m	[32m    public ResponseEntity<String> sendOtp(@RequestBody SetAtmPin atmNumber) {[m
+[32m+[m	[32m        try {[m
+[32m+[m	[32m            String response = bankService.sendOtp(atmNumber.getAtmNumber());[m
+[32m+[m	[32m            return ResponseEntity.ok(response);[m
+[32m+[m	[32m        } catch (IllegalArgumentException e) {[m
+[32m+[m	[32m            return ResponseEntity.badRequest().body(e.getMessage());[m
+[32m+[m	[32m        }[m
+[32m+[m	[32m    }[m
+[32m+[m
+[32m+[m	[32m    @PostMapping("/set-pin")[m
+[32m+[m	[32m    public ResponseEntity<Bank> setPin(@RequestBody SetAtmPin setAtmPin) {[m
+[32m+[m	[32m        try {[m
+[32m+[m	[32m            Bank updatedBank = bankService.setPin(setAtmPin);[m
+[32m+[m[41m	            [m
+[32m+[m	[32m            return ResponseEntity.ok(updatedBank);[m
+[32m+[m	[32m        } catch (IllegalArgumentException e) {[m
+[32m+[m	[32m            return ResponseEntity.badRequest().body(null);[m
+[32m+[m	[32m        }[m
+[32m+[m	[32m    }[m
+[32m+[m	[32m // end point for withdraw by using ATM[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/withdrawATM")[m
+[32m+[m	[32m    public String withdrawByATM(@RequestBody AtmTransactions details) {[m
+[32m+[m[41m	    	[m
+[32m+[m	[41m    [m	[32mreturn bankService.withdrawUsingATM(details);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m // end point for Deposit by using ATM[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/depositATM")[m
+[32m+[m	[32m    public String depositByATM(@RequestBody AtmTransactions details) {[m
+[32m+[m[41m	    	[m
+[32m+[m	[41m    [m	[32mreturn bankService.depositUsingATM(details);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m[41m	    [m
+[32m+[m[41m	    [m
+[32m+[m	[32m  // end point for mini statement by using ATM[m
+[32m+[m	[32m    @PostMapping("/miniStatementATM")[m
+[32m+[m	[32m    public void  miniStatementByATM(@RequestBody MiniStatementATM mini) {[m
+[32m+[m	[41m    [m	[32m//TODO: process POST request[m
+[32m+[m[41m	    	[m
+[32m+[m	[41m    [m	[32mbankService.miniStatementByATM(mini);[m
+[32m+[m[41m	    	[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    // end point for balance enquire with ATM[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/balanceATM")[m
+[32m+[m	[32m    public String balanceEnquireATM(@RequestBody BalanceEnquireATM atm) {[m
+[32m+[m[41m	    	[m
+[32m+[m[41m	    	[m
+[32m+[m	[41m    [m	[32mreturn bankService.balanceEnquireByATM(atm);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m	[32m    // end point for transfer Amount by ATM[m[41m [m
+[32m+[m[41m	    [m
+[32m+[m	[32m    @PostMapping("/transferATM")[m
+[32m+[m	[32m    public String transferByATM(@RequestBody TransferByATM atm) {[m
+[32m+[m[41m	    	[m
+[32m+[m[41m	    	[m
+[32m+[m	[41m    [m	[32mreturn bankService.transferUsingATM(atm);[m
+[32m+[m	[32m    }[m
+[32m+[m[41m	    [m
+[32m+[m[41m	    [m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/ApplyATM.java b/src/main/java/com/uday/dto/ApplyATM.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6a7d5be[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/ApplyATM.java[m
+[36m@@ -0,0 +1,41 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class ApplyATM {[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate long accountNumber;[m
+[32m+[m	[32mprivate String name;[m
+[32m+[m	[32mprivate long mobileNumber;[m
+[32m+[m	[32mpublic ApplyATM() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic ApplyATM(long accountNumber, String name, long mobileNumber) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m		[32mthis.name = name;[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getAccountNumber() {[m
+[32m+[m		[32mreturn accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAccountNumber(long accountNumber) {[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getName() {[m
+[32m+[m		[32mreturn name;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setName(String name) {[m
+[32m+[m		[32mthis.name = name;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getMobileNumber() {[m
+[32m+[m		[32mreturn mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setMobileNumber(long mobileNumber) {[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "ApplyATM [accountNumber=" + accountNumber + ", name=" + name + ", mobileNumber=" + mobileNumber + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/AtmTransactions.java b/src/main/java/com/uday/dto/AtmTransactions.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..eae00d2[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/AtmTransactions.java[m
+[36m@@ -0,0 +1,44 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class AtmTransactions {[m
+[32m+[m
+[32m+[m	[32mprivate long atmNumber;[m
+[32m+[m	[32mprivate int pin;[m
+[32m+[m	[32mprivate double amount;[m
+[32m+[m	[32mpublic AtmTransactions() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic AtmTransactions(long atmNumber, int pin, double amount) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m		[32mthis.amount = amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getAtmNumber() {[m
+[32m+[m		[32mreturn atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAtmNumber(long atmNumber) {[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic int getPin() {[m
+[32m+[m		[32mreturn pin;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setPin(int pin) {[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic double getAmount() {[m
+[32m+[m		[32mreturn amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAmount(double amount) {[m
+[32m+[m		[32mthis.amount = amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "AtmTransactions [atmNumber=" + atmNumber + ", pin=" + pin + ", amount=" + amount + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/BalanceEnquireATM.java b/src/main/java/com/uday/dto/BalanceEnquireATM.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..605f576[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/BalanceEnquireATM.java[m
+[36m@@ -0,0 +1,38 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class BalanceEnquireATM {[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate long atmNumber;[m
+[32m+[m	[32mprivate int pin;[m
+[32m+[m	[32mpublic BalanceEnquireATM() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic BalanceEnquireATM(long atmNumber, int pin) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getAtmNumber() {[m
+[32m+[m		[32mreturn atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAtmNumber(long atmNumber) {[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic int getPin() {[m
+[32m+[m		[32mreturn pin;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setPin(int pin) {[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m	[32m}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "BalanceEnquireATM [atmNumber=" + atmNumber + ", pin=" + pin + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/CancleATM.java b/src/main/java/com/uday/dto/CancleATM.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..aa9a968[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/CancleATM.java[m
+[36m@@ -0,0 +1,42 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class CancleATM {[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate long accountNumber;[m
+[32m+[m	[32mprivate String name;[m
+[32m+[m	[32mprivate long mobileNumber;[m
+[32m+[m	[32mpublic CancleATM() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic CancleATM(long accountNumber, String name, long mobileNumber) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m		[32mthis.name = name;[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getAccountNumber() {[m
+[32m+[m		[32mreturn accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAccountNumber(long accountNumber) {[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getName() {[m
+[32m+[m		[32mreturn name;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setName(String name) {[m
+[32m+[m		[32mthis.name = name;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getMobileNumber() {[m
+[32m+[m		[32mreturn mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setMobileNumber(long mobileNumber) {[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "CancleATM [accountNumber=" + accountNumber + ", name=" + name + ", mobileNumber=" + mobileNumber + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/CheckBalance.java b/src/main/java/com/uday/dto/CheckBalance.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..489e146[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/CheckBalance.java[m
+[36m@@ -0,0 +1,34 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class CheckBalance {[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate long accountNumber;[m
+[32m+[m	[32mprivate long mobileNumber;[m
+[32m+[m	[32mpublic CheckBalance() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic CheckBalance(long accountNumber, long mobileNumber) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getAccountNumber() {[m
+[32m+[m		[32mreturn accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAccountNumber(long accountNumber) {[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getMobileNumber() {[m
+[32m+[m		[32mreturn mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setMobileNumber(long mobileNumber) {[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "CheckBalance [accountNumber=" + accountNumber + ", mobileNumber=" + mobileNumber + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/MiniStatement.java b/src/main/java/com/uday/dto/MiniStatement.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b253027[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/MiniStatement.java[m
+[36m@@ -0,0 +1,31 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class MiniStatement {[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate long accountNumber;[m
+[32m+[m
+[32m+[m	[32mpublic MiniStatement() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic MiniStatement(long accountNumber) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic long getAccountNumber() {[m
+[32m+[m		[32mreturn accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic void setAccountNumber(long accountNumber) {[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "MiniStatement [accountNumber=" + accountNumber + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/MiniStatementATM.java b/src/main/java/com/uday/dto/MiniStatementATM.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f36c63f[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/MiniStatementATM.java[m
+[36m@@ -0,0 +1,36 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class MiniStatementATM {[m
+[32m+[m
+[32m+[m	[32mprivate long atmNumber;[m
+[32m+[m	[32mprivate int pin;[m
+[32m+[m	[32mpublic MiniStatementATM() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic MiniStatementATM(long atmNumber, int pin) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getAtmNumber() {[m
+[32m+[m		[32mreturn atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAtmNumber(long atmNumber) {[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic int getPin() {[m
+[32m+[m		[32mreturn pin;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setPin(int pin) {[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m	[32m}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "MiniStatementATM [atmNumber=" + atmNumber + ", pin=" + pin + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/SetAtmPin.java b/src/main/java/com/uday/dto/SetAtmPin.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..8fdbd34[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/SetAtmPin.java[m
+[36m@@ -0,0 +1,56 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class SetAtmPin {[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate long atmNumber;[m
+[32m+[m[32m    private int pin;[m
+[32m+[m[32m    private int otp;[m
+[32m+[m
+[32m+[m	[32mpublic SetAtmPin() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic SetAtmPin(long atmNumber, int pin, int otp) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m		[32mthis.otp = otp;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic long getAtmNumber() {[m
+[32m+[m		[32mreturn atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic void setAtmNumber(long atmNumber) {[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic int getPin() {[m
+[32m+[m		[32mreturn pin;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic void setPin(int pin) {[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic int getOtp() {[m
+[32m+[m		[32mreturn otp;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic void setOtp(int otp) {[m
+[32m+[m		[32mthis.otp = otp;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "SetAtmPin [atmNumber=" + atmNumber + ", pin=" + pin + ", otp=" + otp + "]";[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/Statement.java b/src/main/java/com/uday/dto/Statement.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..4c52818[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/Statement.java[m
+[36m@@ -0,0 +1,33 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class Statement {[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate long accountNumber;[m
+[32m+[m
+[32m+[m	[32mpublic Statement() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic Statement(long accountNumber) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic long getAccountNumber() {[m
+[32m+[m		[32mreturn accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mpublic void setAccountNumber(long accountNumber) {[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "Statement [accountNumber=" + accountNumber + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/TransferAmount.java b/src/main/java/com/uday/dto/TransferAmount.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3915252[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/TransferAmount.java[m
+[36m@@ -0,0 +1,59 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class TransferAmount {[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate long fromAccountNumber;[m
+[32m+[m	[32mprivate String name;[m
+[32m+[m	[32mprivate long mobileNumber;[m
+[32m+[m	[32mprivate long toAccountNumber;[m
+[32m+[m	[32mprivate double amount;[m
+[32m+[m	[32mpublic TransferAmount() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic TransferAmount(long fromAccountNumber, String name, long mobileNumber, long toAccountNumber, double amount) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.fromAccountNumber = fromAccountNumber;[m
+[32m+[m		[32mthis.name = name;[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m		[32mthis.toAccountNumber = toAccountNumber;[m
+[32m+[m		[32mthis.amount = amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getFromAccountNumber() {[m
+[32m+[m		[32mreturn fromAccountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setFromAccountNumber(long fromAccountNumber) {[m
+[32m+[m		[32mthis.fromAccountNumber = fromAccountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getName() {[m
+[32m+[m		[32mreturn name;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setName(String name) {[m
+[32m+[m		[32mthis.name = name;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getMobileNumber() {[m
+[32m+[m		[32mreturn mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setMobileNumber(long mobileNumber) {[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getToAccountNumber() {[m
+[32m+[m		[32mreturn toAccountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setToAccountNumber(long toAccountNumber) {[m
+[32m+[m		[32mthis.toAccountNumber = toAccountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic double getAmount() {[m
+[32m+[m		[32mreturn amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAmount(double amount) {[m
+[32m+[m		[32mthis.amount = amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "TransferAmount [fromAccountNumber=" + fromAccountNumber + ", name=" + name + ", mobileNumber="[m
+[32m+[m				[32m+ mobileNumber + ", toAccountNumber=" + toAccountNumber + ", amount=" + amount + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/TransferByATM.java b/src/main/java/com/uday/dto/TransferByATM.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..2b3f8e0[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/TransferByATM.java[m
+[36m@@ -0,0 +1,51 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class TransferByATM {[m
+[32m+[m
+[32m+[m	[32mprivate long atmNumber;[m
+[32m+[m	[32mprivate int pin;[m
+[32m+[m	[32mprivate long toAccountNumber;[m
+[32m+[m	[32mprivate double amount;[m
+[32m+[m	[32mpublic TransferByATM() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic TransferByATM(long atmNumber, int pin, long toAccountNumber, double amount) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m		[32mthis.toAccountNumber = toAccountNumber;[m
+[32m+[m		[32mthis.amount = amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getAtmNumber() {[m
+[32m+[m		[32mreturn atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAtmNumber(long atmNumber) {[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic int getPin() {[m
+[32m+[m		[32mreturn pin;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setPin(int pin) {[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getToAccountNumber() {[m
+[32m+[m		[32mreturn toAccountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setToAccountNumber(long toAccountNumber) {[m
+[32m+[m		[32mthis.toAccountNumber = toAccountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic double getAmount() {[m
+[32m+[m		[32mreturn amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAmount(double amount) {[m
+[32m+[m		[32mthis.amount = amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "TransferByATM [atmNumber=" + atmNumber + ", pin=" + pin + ", toAccountNumber=" + toAccountNumber[m
+[32m+[m				[32m+ ", amount=" + amount + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/dto/UpdateAccount.java b/src/main/java/com/uday/dto/UpdateAccount.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c7f150f[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/dto/UpdateAccount.java[m
+[36m@@ -0,0 +1,120 @@[m
+[32m+[m[32mpackage com.uday.dto;[m
+[32m+[m
+[32m+[m[32mpublic class UpdateAccount {[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate long accountNumber;[m
+[32m+[m	[32mprivate String ifsc;[m
+[32m+[m	[32mprivate String name;[m
+[32m+[m	[32mprivate String fatherName;[m
+[32m+[m	[32mprivate int age;[m
+[32m+[m	[32mprivate String dateOfBirth;[m
+[32m+[m	[32mprivate String email;[m
+[32m+[m	[32mprivate long mobileNumber;[m
+[32m+[m	[32mprivate String address;[m
+[32m+[m	[32mprivate String state;[m
+[32m+[m	[32mprivate String district;[m
+[32m+[m	[32mprivate long adharnumber;[m
+[32m+[m	[32mpublic UpdateAccount() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic UpdateAccount(long accountNumber, String ifsc, String name, String fatherName, int age, String dateOfBirth,[m
+[32m+[m			[32mString email, long mobileNumber, String address, String state, String district, long adharnumber) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m		[32mthis.ifsc = ifsc;[m
+[32m+[m		[32mthis.name = name;[m
+[32m+[m		[32mthis.fatherName = fatherName;[m
+[32m+[m		[32mthis.age = age;[m
+[32m+[m		[32mthis.dateOfBirth = dateOfBirth;[m
+[32m+[m		[32mthis.email = email;[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m		[32mthis.address = address;[m
+[32m+[m		[32mthis.state = state;[m
+[32m+[m		[32mthis.district = district;[m
+[32m+[m		[32mthis.adharnumber = adharnumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getAccountNumber() {[m
+[32m+[m		[32mreturn accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAccountNumber(long accountNumber) {[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getIfsc() {[m
+[32m+[m		[32mreturn ifsc;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setIfsc(String ifsc) {[m
+[32m+[m		[32mthis.ifsc = ifsc;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getName() {[m
+[32m+[m		[32mreturn name;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setName(String name) {[m
+[32m+[m		[32mthis.name = name;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getFatherName() {[m
+[32m+[m		[32mreturn fatherName;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setFatherName(String fatherName) {[m
+[32m+[m		[32mthis.fatherName = fatherName;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic int getAge() {[m
+[32m+[m		[32mreturn age;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAge(int age) {[m
+[32m+[m		[32mthis.age = age;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getDateOfBirth() {[m
+[32m+[m		[32mreturn dateOfBirth;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setDateOfBirth(String dateOfBirth) {[m
+[32m+[m		[32mthis.dateOfBirth = dateOfBirth;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getEmail() {[m
+[32m+[m		[32mreturn email;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setEmail(String email) {[m
+[32m+[m		[32mthis.email = email;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getMobileNumber() {[m
+[32m+[m		[32mreturn mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setMobileNumber(long mobileNumber) {[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getAddress() {[m
+[32m+[m		[32mreturn address;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAddress(String address) {[m
+[32m+[m		[32mthis.address = address;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getState() {[m
+[32m+[m		[32mreturn state;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setState(String state) {[m
+[32m+[m		[32mthis.state = state;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getDistrict() {[m
+[32m+[m		[32mreturn district;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setDistrict(String district) {[m
+[32m+[m		[32mthis.district = district;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic long getAdharnumber() {[m
+[32m+[m		[32mreturn adharnumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAdharnumber(long adharnumber) {[m
+[32m+[m		[32mthis.adharnumber = adharnumber;[m
+[32m+[m	[32m}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "UpdateAccount [accountNumber=" + accountNumber + ", ifsc=" + ifsc + ", name=" + name + ", fatherName="[m
+[32m+[m				[32m+ fatherName + ", age=" + age + ", dateOfBirth=" + dateOfBirth + ", email=" + email + ", mobileNumber="[m
+[32m+[m				[32m+ mobileNumber + ", address=" + address + ", state=" + state + ", district=" + district[m
+[32m+[m				[32m+ ", adharnumber=" + adharnumber + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/model/Bank.java b/src/main/java/com/uday/model/Bank.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..291feb0[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/model/Bank.java[m
+[36m@@ -0,0 +1,347 @@[m
+[32m+[m[32mpackage com.uday.model;[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32mimport java.util.ArrayList;[m
+[32m+[m[32mimport java.util.List;[m
+[32m+[m[32mimport java.util.Locale;[m
+[32m+[m
+[32m+[m[32mimport com.uday.utility.AccountNumberGenerator;[m
+[32m+[m
+[32m+[m[32mimport jakarta.persistence.CascadeType;[m
+[32m+[m[32mimport jakarta.persistence.Entity;[m
+[32m+[m[32mimport jakarta.persistence.Id;[m
+[32m+[m[32mimport jakarta.persistence.OneToMany;[m
+[32m+[m[32mimport jakarta.persistence.PrePersist;[m
+[32m+[m
+[32m+[m
+[32m+[m[32m@Entity[m
+[32m+[m[32mpublic class Bank {[m
+[32m+[m
+[32m+[m	[32m@Id[m
+[32m+[m	[32mprivate long accountNumber;[m
+[32m+[m	[32mprivate String name;[m
+[32m+[m	[32mprivate String fatherName;[m
+[32m+[m	[32mprivate String accountType;[m
+[32m+[m	[32mprivate long atmNumber;[m
+[32m+[m	[32mprivate String needsAtm = "no"; // Indicates if ATM is needed; default to "no"[m
+[32m+[m	[32mprivate int pin;[m
+[32m+[m	[32mprivate String branch;[m
+[32m+[m	[32mprivate String ifsc;[m
+[32m+[m	[32mprivate String date;[m
+[32m+[m	[32mprivate int age;[m
+[32m+[m	[32mprivate String dateOfBirth;[m
+[32m+[m	[32mprivate String email;[m
+[32m+[m	[32mprivate long mobileNumber;[m
+[32m+[m	[32mprivate long adharnumber;[m
+[32m+[m	[32mprivate String address;[m
+[32m+[m	[32mprivate String state;[m
+[32m+[m	[32mprivate String district;[m
+[32m+[m	[32mprivate int pinCode;[m
+[32m+[m	[32mprivate double amount;[m
+[32m+[m	[32mprivate String status;[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m	[32m@OneToMany(mappedBy = "bank", cascade = CascadeType.ALL, orphanRemoval = true)[m
+[32m+[m[32m    private List<TransactionHistory> transactionHistory = new ArrayList<>();[m
+[32m+[m
+[32m+[m[32m    // Method to add a transaction to the list[m
+[32m+[m[32m    public void addTransaction(TransactionHistory transaction) {[m
+[32m+[m[32m        transactionHistory.add(transaction);[m
+[32m+[m[32m        transaction.setBank(this);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[41m	[m
+[32m+[m[32m    // PrePersist method to generate the account number before saving[m
+[32m+[m[32m    @PrePersist[m
+[32m+[m[32m    public void generateAccountDetails() {[m
+[32m+[m[32m        if (this.accountNumber == 0) {[m
+[32m+[m[32m            this.accountNumber = AccountNumberGenerator.generateAccountNumber();[m
+[32m+[m[32m        }[m
+[32m+[m[32m        // Generate ATM number if 'needsAtm' is "yes" and 'atmNumber' is 0[m
+[32m+[m[41m        [m
+[32m+[m[32m      if ("yes".equals(this.needsAtm) && this.atmNumber == 0) {[m
+[32m+[m[32m            this.atmNumber = AccountNumberGenerator.atmNumberGenarater();[m
+[32m+[m[32m        }[m
+[32m+[m[32m      // generate IFSC code[m
+[32m+[m[32m      if (branch == null || branch.length() < 2) {[m
+[32m+[m[32m          throw new IllegalArgumentException("Branch name must be at least 2 characters long.");[m
+[32m+[m[32m      }[m
+[32m+[m[32m      // Generate IFSC using the first 2 letters of the branch name and a static code[m
+[32m+[m[32m      this.ifsc = branch.substring(0, 2).toUpperCase(Locale.ROOT) + "009963";[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m   [m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic Bank() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic Bank(long accountNumber, String name, String fatherName, String accountType, long atmNumber, String needsAtm,[m
+[32m+[m			[32mint pin, String branch, String ifsc, String date, int age, String dateOfBirth, String email,[m
+[32m+[m			[32mlong mobileNumber, long adharnumber, String address, String state, String district, int pinCode,[m
+[32m+[m			[32mdouble amount, String status, List<TransactionHistory> transactionHistory) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m		[32mthis.name = name;[m
+[32m+[m		[32mthis.fatherName = fatherName;[m
+[32m+[m		[32mthis.accountType = accountType;[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m		[32mthis.needsAtm = needsAtm;[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m		[32mthis.branch = branch;[m
+[32m+[m		[32mthis.ifsc = ifsc;[m
+[32m+[m		[32mthis.date = date;[m
+[32m+[m		[32mthis.age = age;[m
+[32m+[m		[32mthis.dateOfBirth = dateOfBirth;[m
+[32m+[m		[32mthis.email = email;[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m		[32mthis.adharnumber = adharnumber;[m
+[32m+[m		[32mthis.address = address;[m
+[32m+[m		[32mthis.state = state;[m
+[32m+[m		[32mthis.district = district;[m
+[32m+[m		[32mthis.pinCode = pinCode;[m
+[32m+[m		[32mthis.amount = amount;[m
+[32m+[m		[32mthis.status = status;[m
+[32m+[m		[32mthis.transactionHistory = transactionHistory;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic long getAccountNumber() {[m
+[32m+[m		[32mreturn accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setAccountNumber(long accountNumber) {[m
+[32m+[m		[32mthis.accountNumber = accountNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getName() {[m
+[32m+[m		[32mreturn name;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setName(String name) {[m
+[32m+[m		[32mthis.name = name;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getFatherName() {[m
+[32m+[m		[32mreturn fatherName;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setFatherName(String fatherName) {[m
+[32m+[m		[32mthis.fatherName = fatherName;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getAccountType() {[m
+[32m+[m		[32mreturn accountType;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setAccountType(String accountType) {[m
+[32m+[m		[32mthis.accountType = accountType;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic long getAtmNumber() {[m
+[32m+[m		[32mreturn atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setAtmNumber(long atmNumber) {[m
+[32m+[m		[32mthis.atmNumber = atmNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getNeedsAtm() {[m
+[32m+[m		[32mreturn needsAtm;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setNeedsAtm(String needsAtm) {[m
+[32m+[m		[32mthis.needsAtm = needsAtm;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic int getPin() {[m
+[32m+[m		[32mreturn pin;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setPin(int pin) {[m
+[32m+[m		[32mthis.pin = pin;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getBranch() {[m
+[32m+[m		[32mreturn branch;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setBranch(String branch) {[m
+[32m+[m		[32mthis.branch = branch;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getIfsc() {[m
+[32m+[m		[32mreturn ifsc;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setIfsc(String ifsc) {[m
+[32m+[m		[32mthis.ifsc = ifsc;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getDate() {[m
+[32m+[m		[32mreturn date;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setDate(String date) {[m
+[32m+[m		[32mthis.date = date;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic int getAge() {[m
+[32m+[m		[32mreturn age;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setAge(int age) {[m
+[32m+[m		[32mthis.age = age;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getDateOfBirth() {[m
+[32m+[m		[32mreturn dateOfBirth;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setDateOfBirth(String dateOfBirth) {[m
+[32m+[m		[32mthis.dateOfBirth = dateOfBirth;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getEmail() {[m
+[32m+[m		[32mreturn email;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setEmail(String email) {[m
+[32m+[m		[32mthis.email = email;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic long getMobileNumber() {[m
+[32m+[m		[32mreturn mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setMobileNumber(long mobileNumber) {[m
+[32m+[m		[32mthis.mobileNumber = mobileNumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic long getAdharnumber() {[m
+[32m+[m		[32mreturn adharnumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setAdharnumber(long adharnumber) {[m
+[32m+[m		[32mthis.adharnumber = adharnumber;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getAddress() {[m
+[32m+[m		[32mreturn address;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setAddress(String address) {[m
+[32m+[m		[32mthis.address = address;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getState() {[m
+[32m+[m		[32mreturn state;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setState(String state) {[m
+[32m+[m		[32mthis.state = state;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getDistrict() {[m
+[32m+[m		[32mreturn district;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setDistrict(String district) {[m
+[32m+[m		[32mthis.district = district;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic int getPinCode() {[m
+[32m+[m		[32mreturn pinCode;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setPinCode(int pinCode) {[m
+[32m+[m		[32mthis.pinCode = pinCode;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic double getAmount() {[m
+[32m+[m		[32mreturn amount;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setAmount(double amount) {[m
+[32m+[m		[32mthis.amount = amount;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic String getStatus() {[m
+[32m+[m		[32mreturn status;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setStatus(String status) {[m
+[32m+[m		[32mthis.status = status;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic List<TransactionHistory> getTransactionHistory() {[m
+[32m+[m		[32mreturn transactionHistory;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32mpublic void setTransactionHistory(List<TransactionHistory> transactionHistory) {[m
+[32m+[m		[32mthis.transactionHistory = transactionHistory;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "Bank [accountNumber=" + accountNumber + ", name=" + name + ", fatherName=" + fatherName[m
+[32m+[m				[32m+ ", accountType=" + accountType + ", atmNumber=" + atmNumber + ", needsAtm=" + needsAtm + ", pin="[m
+[32m+[m				[32m+ pin + ", branch=" + branch + ", ifsc=" + ifsc + ", date=" + date + ", age=" + age + ", dateOfBirth="[m
+[32m+[m				[32m+ dateOfBirth + ", email=" + email + ", mobileNumber=" + mobileNumber + ", adharnumber=" + adharnumber[m
+[32m+[m				[32m+ ", address=" + address + ", state=" + state + ", district=" + district + ", pinCode=" + pinCode[m
+[32m+[m				[32m+ ", amount=" + amount + ", status=" + status + ", transactionHistory=" + transactionHistory + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m
+[32m+[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/main/java/com/uday/model/TransactionHistory.java b/src/main/java/com/uday/model/TransactionHistory.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..7254b10[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/model/TransactionHistory.java[m
+[36m@@ -0,0 +1,97 @@[m
+[32m+[m[32mpackage com.uday.model;[m
+[32m+[m
+[32m+[m[32mimport java.time.LocalDateTime;[m
+[32m+[m
+[32m+[m[32mimport jakarta.persistence.Entity;[m
+[32m+[m[32mimport jakarta.persistence.GeneratedValue;[m
+[32m+[m[32mimport jakarta.persistence.GenerationType;[m
+[32m+[m[32mimport jakarta.persistence.Id;[m
+[32m+[m[32mimport jakarta.persistence.JoinColumn;[m
+[32m+[m[32mimport jakarta.persistence.ManyToOne;[m
+[32m+[m
+[32m+[m[32m@Entity[m
+[32m+[m[32mpublic class TransactionHistory {[m
+[32m+[m
+[32m+[m[32m    @Id[m
+[32m+[m[32m    @GeneratedValue(strategy = GenerationType.IDENTITY)[m
+[32m+[m[32m    private Long transactionId;[m
+[32m+[m
+[32m+[m[32m    @ManyToOne[m
+[32m+[m[32m    @JoinColumn(name = "account_number", nullable = false)[m
+[32m+[m[32m    private Bank bank;[m
+[32m+[m
+[32m+[m[32m    private LocalDateTime transactionDate;[m
+[32m+[m[32m    private String transactionType; // e.g., "Credit" or "Debit"[m
+[32m+[m[32m    private double amount;[m
+[32m+[m[32m    private double availableBalance;[m
+[32m+[m[32m    private String Description;[m
+[32m+[m	[32mpublic TransactionHistory() {[m
+[32m+[m		[32msuper();[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic TransactionHistory(Long transactionId, Bank bank, LocalDateTime transactionDate, String transactionType,[m
+[32m+[m			[32mdouble amount, double availableBalance, String description) {[m
+[32m+[m		[32msuper();[m
+[32m+[m		[32mthis.transactionId = transactionId;[m
+[32m+[m		[32mthis.bank = bank;[m
+[32m+[m		[32mthis.transactionDate = transactionDate;[m
+[32m+[m		[32mthis.transactionType = transactionType;[m
+[32m+[m		[32mthis.amount = amount;[m
+[32m+[m		[32mthis.availableBalance = availableBalance;[m
+[32m+[m		[32mDescription = description;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic Long getTransactionId() {[m
+[32m+[m		[32mreturn transactionId;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setTransactionId(Long transactionId) {[m
+[32m+[m		[32mthis.transactionId = transactionId;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic Bank getBank() {[m
+[32m+[m		[32mreturn bank;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setBank(Bank bank) {[m
+[32m+[m		[32mthis.bank = bank;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic LocalDateTime getTransactionDate() {[m
+[32m+[m		[32mreturn transactionDate;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setTransactionDate(LocalDateTime transactionDate) {[m
+[32m+[m		[32mthis.transactionDate = transactionDate;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getTransactionType() {[m
+[32m+[m		[32mreturn transactionType;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setTransactionType(String transactionType) {[m
+[32m+[m		[32mthis.transactionType = transactionType;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic double getAmount() {[m
+[32m+[m		[32mreturn amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAmount(double amount) {[m
+[32m+[m		[32mthis.amount = amount;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic double getAvailableBalance() {[m
+[32m+[m		[32mreturn availableBalance;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setAvailableBalance(double availableBalance) {[m
+[32m+[m		[32mthis.availableBalance = availableBalance;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getDescription() {[m
+[32m+[m		[32mreturn Description;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setDescription(String description) {[m
+[32m+[m		[32mDescription = description;[m
+[32m+[m	[32m}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic String toString() {[m
+[32m+[m		[32mreturn "TransactionHistory [transactionId=" + transactionId + ", bank=" + bank + ", transactionDate="[m
+[32m+[m				[32m+ transactionDate + ", transactionType=" + transactionType + ", amount=" + amount[m
+[32m+[m				[32m+ ", availableBalance=" + availableBalance + ", Description=" + Description + "]";[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/repo/BankRepo.java b/src/main/java/com/uday/repo/BankRepo.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..8a60be9[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/repo/BankRepo.java[m
+[36m@@ -0,0 +1,22 @@[m
+[32m+[m[32mpackage com.uday.repo;[m
+[32m+[m
+[32m+[m[32mimport java.util.Optional;[m
+[32m+[m
+[32m+[m[32mimport org.springframework.data.jpa.repository.JpaRepository;[m
+[32m+[m
+[32m+[m[32mimport com.uday.model.Bank;[m
+[32m+[m
+[32m+[m[32mpublic interface BankRepo extends JpaRepository<Bank, Long> {[m
+[32m+[m[41m	[m
+[32m+[m	[32m// Custom method to find a Bank by email[m
+[32m+[m[32m    Optional<Bank> findByEmail(String email);[m
+[32m+[m[41m    [m
+[32m+[m[32m   // Custom method to find a Bank by mobile number[m
+[32m+[m[32m    Optional<Bank> findByMobileNumber(long mobileNumber);[m
+[32m+[m
+[32m+[m[32m   // Custom method to find a Bank by adhar number number[m
+[32m+[m[32m    Optional<Bank> findByAdharnumber(long adharnumber);[m
+[32m+[m[41m    [m
+[32m+[m[32m   // Custom method to find a bank by atmNumber[m
+[32m+[m[32m    Optional<Bank> findByAtmNumber(long atmNumber);[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/service/BankService.java b/src/main/java/com/uday/service/BankService.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..aa96b70[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/service/BankService.java[m
+[36m@@ -0,0 +1,1346 @@[m
+[32m+[m[32mpackage com.uday.service;[m
+[32m+[m
+[32m+[m[32mimport java.io.ByteArrayOutputStream;[m
+[32m+[m[32mimport java.net.MalformedURLException;[m
+[32m+[m[32mimport java.time.LocalDate;[m
+[32m+[m[32mimport java.time.LocalDateTime;[m
+[32m+[m[32mimport java.time.LocalTime;[m
+[32m+[m[32mimport java.time.format.DateTimeFormatter;[m
+[32m+[m[32mimport java.util.List;[m
+[32m+[m[32mimport java.util.Map;[m
+[32m+[m[32mimport java.util.Optional;[m
+[32m+[m[32mimport java.util.Random;[m
+[32m+[m[32mimport java.util.concurrent.ConcurrentHashMap;[m
+[32m+[m
+[32m+[m[32mimport org.springframework.beans.factory.annotation.Autowired;[m
+[32m+[m[32mimport org.springframework.beans.factory.annotation.Value;[m
+[32m+[m[32mimport org.springframework.core.io.ByteArrayResource;[m
+[32m+[m[32mimport org.springframework.mail.SimpleMailMessage;[m
+[32m+[m[32mimport org.springframework.mail.javamail.JavaMailSender;[m
+[32m+[m[32mimport org.springframework.mail.javamail.MimeMessageHelper;[m
+[32m+[m[32mimport org.springframework.stereotype.Service;[m
+[32m+[m
+[32m+[m[32mimport com.itextpdf.io.exceptions.IOException;[m
+[32m+[m[32mimport com.itextpdf.io.image.ImageDataFactory;[m
+[32m+[m[32mimport com.itextpdf.kernel.colors.DeviceRgb;[m
+[32m+[m[32mimport com.itextpdf.kernel.geom.PageSize;[m
+[32m+[m[32mimport com.itextpdf.kernel.pdf.PdfDocument;[m
+[32m+[m[32mimport com.itextpdf.kernel.pdf.PdfWriter;[m
+[32m+[m[32mimport com.itextpdf.layout.Document;[m
+[32m+[m[32mimport com.itextpdf.layout.borders.Border;[m
+[32m+[m[32mimport com.itextpdf.layout.borders.SolidBorder;[m
+[32m+[m[32mimport com.itextpdf.layout.element.Cell;[m
+[32m+[m[32mimport com.itextpdf.layout.element.Image;[m
+[32m+[m[32mimport com.itextpdf.layout.element.Paragraph;[m
+[32m+[m[32mimport com.itextpdf.layout.element.Table;[m
+[32m+[m[32mimport com.itextpdf.layout.properties.HorizontalAlignment;[m
+[32m+[m[32mimport com.itextpdf.layout.properties.TextAlignment;[m
+[32m+[m[32mimport com.itextpdf.layout.properties.UnitValue;[m
+[32m+[m[32mimport com.itextpdf.layout.properties.VerticalAlignment;[m
+[32m+[m[32mimport com.twilio.Twilio;[m
+[32m+[m[32mimport com.twilio.exception.ApiException;[m
+[32m+[m[32mimport com.twilio.rest.api.v2010.account.Message;[m
+[32m+[m[32mimport com.twilio.type.PhoneNumber;[m
+[32m+[m[32mimport com.uday.dto.ApplyATM;[m
+[32m+[m[32mimport com.uday.dto.AtmTransactions;[m
+[32m+[m[32mimport com.uday.dto.BalanceEnquireATM;[m
+[32m+[m[32mimport com.uday.dto.CancleATM;[m
+[32m+[m[32mimport com.uday.dto.CheckBalance;[m
+[32m+[m[32mimport com.uday.dto.MiniStatementATM;[m
+[32m+[m[32mimport com.uday.dto.SetAtmPin;[m
+[32m+[m[32mimport com.uday.dto.Statement;[m
+[32m+[m[32mimport com.uday.dto.TransferAmount;[m
+[32m+[m[32mimport com.uday.dto.TransferByATM;[m
+[32m+[m[32mimport com.uday.dto.UpdateAccount;[m
+[32m+[m[32mimport com.uday.model.Bank;[m
+[32m+[m[32mimport com.uday.model.TransactionHistory;[m
+[32m+[m[32mimport com.uday.repo.BankRepo;[m
+[32m+[m[32mimport com.uday.utility.AccountNumberGenerator;[m
+[32m+[m
+[32m+[m[32mimport jakarta.mail.internet.MimeMessage;[m
+[32m+[m
+[32m+[m[32m@Service[m
+[32m+[m[32mpublic class BankService {[m
+[32m+[m
+[32m+[m[32m    @Autowired[m
+[32m+[m[32m    private BankRepo repo;[m
+[32m+[m[41m    [m
+[32m+[m[32m    @Autowired[m
+[32m+[m[32m    private JavaMailSender mailSender;[m
+[32m+[m[41m    [m
+[32m+[m[41m   [m
+[32m+[m[41m    [m
+[32m+[m[32m    // Inject Twilio properties from application.properties[m
+[32m+[m[41m    [m
+[32m+[m[32m    @Value("${twilio.account.sid}")[m
+[32m+[m[32m    private String accountSid;[m
+[32m+[m
+[32m+[m[32m    @Value("${twilio.auth.token}")[m
+[32m+[m[32m    private String authToken;[m
+[32m+[m
+[32m+[m[32m    @Value("${twilio.phone.number}")[m
+[32m+[m[32m    private String fromPhoneNumber;[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[32m    // Get current date and time[m
+[32m+[m[32m    LocalDateTime now = LocalDateTime.now();[m
+[32m+[m[32m    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");[m
+[32m+[m[32m    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");[m
+[32m+[m
+[32m+[m[32m    String currentDate = now.format(dateFormatter);[m
+[32m+[m[32m    String currentTime = now.format(timeFormatter);[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m
+[32m+[m[32m    // Method to create a new bank account with email,PHno,adharNo validation[m
+[32m+[m[41m    [m
+[32m+[m[32m    public Bank createBankAccount(Bank bank) {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        // Check if email already exists[m
+[32m+[m[41m    	[m
+[32m+[m[32m        if (repo.findByEmail(bank.getEmail()).isPresent()) {[m
+[32m+[m[32m            throw new IllegalArgumentException("This Email already exists: " + bank.getEmail());[m
+[32m+[m[32m        }[m
+[32m+[m[41m        [m
+[32m+[m[32m       // Check if mobile number already exists[m
+[32m+[m[41m        [m
+[32m+[m[32m       if(repo.findByMobileNumber(bank.getMobileNumber()).isPresent())  {[m
+[32m+[m[41m    [m	[32m   throw new IllegalArgumentException("This Mobile Number is already exists: " + bank.getMobileNumber());[m
+[32m+[m[32m       }[m
+[32m+[m[41m       [m
+[32m+[m[32m       // Check if mobile number already exists[m
+[32m+[m[41m       [m
+[32m+[m[32m       if(repo.findByAdharnumber(bank.getAdharnumber()).isPresent()) {[m
+[32m+[m[41m    [m	[32m   throw new IllegalArgumentException("This Adhar Number is already exists: " + bank.getAdharnumber());[m
+[32m+[m[32m       }[m
+[32m+[m[41m       [m
+[32m+[m[32m       Bank savedBank = repo.save(bank);[m
+[32m+[m[41m       [m
+[32m+[m[32m       // Send email after created account successful[m[41m [m
+[32m+[m[41m       [m
+[32m+[m[32m       try {[m
+[32m+[m[32m           SimpleMailMessage message = new SimpleMailMessage();[m
+[32m+[m[32m           message.setTo(bank.getEmail());[m
+[32m+[m[32m           message.setSubject("Account Created Successfully");[m
+[32m+[m
+[32m+[m[32m           // creating of the email[m
+[32m+[m[32m           String emailBody = "Dear " + savedBank.getName() + ",\n\n" +[m
+[32m+[m[32m                              "Your account has been successfully created!\n\n" +[m
+[32m+[m[32m                              "Account Holder Name: " + savedBank.getName() + "\n" +[m
+[32m+[m[32m                              "Account Number: " + savedBank.getAccountNumber() + "\n" +[m
+[32m+[m[32m                              "Account type:"+savedBank.getAccountType()+"\n"+[m
+[32m+[m[32m                              "IFSC Code: " + savedBank.getIfsc() + "\n" +[m
+[32m+[m[32m                              "Branch: " + savedBank.getBranch() + "\n" +[m
+[32m+[m[32m                              "District: " + savedBank.getDistrict() + "\n" +[m
+[32m+[m[32m                              "State: " + savedBank.getState() + "\n" +[m
+[32m+[m[32m                              "Mobile Number: " + savedBank.getMobileNumber() + "\n" +[m
+[32m+[m[32m                              "Address: " + savedBank.getAddress() + "\n" +[m
+[32m+[m[32m                              "Father Name: " + savedBank.getFatherName() + "\n" +[m
+[32m+[m[32m                              "Pin Code: " + savedBank.getPinCode() + "\n" +[m
+[32m+[m[32m                              "Please keep this information secure.\n\n" +[m
+[32m+[m[32m                              "Best regards,\n" +[m
+[32m+[m[32m                              "USA Bank";[m
+[32m+[m
+[32m+[m[32m           message.setText(emailBody);[m
+[32m+[m[32m           mailSender.send(message);  // Send email[m
+[32m+[m[41m           [m
+[32m+[m[32m           // Check if an ATM was created and  send the ATM details also[m
+[32m+[m[41m           [m
+[32m+[m[32m           if ("yes".equals(savedBank.getNeedsAtm()) && savedBank.getAtmNumber() != 0) {[m
+[32m+[m[32m               Bank atmDetails = savedBank;[m
+[32m+[m[32m              String emailForATM = "\nATM Card Details:\n" +[m
+[32m+[m[32m                            "ATM Card Number: " + atmDetails.getAtmNumber() + "\n" +[m
+[32m+[m[32m                            "ATM PIN: " + atmDetails.getPin() + "\n" +[m[41m [m
+[32m+[m[32m                            "Please keep this information secure.\n\n" +[m
+[32m+[m[32m                            "Best regards,\n" +[m
+[32m+[m[32m                            "USA Bank";[m
+[32m+[m[41m              [m
+[32m+[m[32m              message.setText(emailForATM);[m
+[32m+[m[32m              mailSender.send(message);  // Send email[m
+[32m+[m[32m           }[m
+[32m+[m[41m           [m
+[32m+[m[32m       } catch (Exception e) {[m
+[32m+[m[41m    	   [m
+[32m+[m[32m           //  throw exception if email sending fails[m
+[32m+[m[32m           throw new RuntimeException("Error sending email: " + e.getMessage());[m
+[32m+[m[32m       }[m
+[32m+[m
+[32m+[m[41m       [m
+[32m+[m[41m        [m
+[32m+[m[32m        return savedBank;[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m    // Method to get One Account Holder Details[m
+[32m+[m[41m    [m
+[32m+[m[32m    public Bank getOneHolder(long acno) {[m
+[32m+[m[41m    	[m
+[32m+[m[41m    [m	[32mreturn repo.findById(acno).get();[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m    // Method to get All Account Holders Details[m
+[32m+[m[41m    [m
+[32m+[m[32m    public List<Bank> getAllAccountHolders() {[m
+[32m+[m[41m    	[m
+[32m+[m[41m    [m	[32mreturn repo.findAll();[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m    // method for withdraw amount[m[41m [m
+[32m+[m[41m    [m
+[32m+[m[32m      public String withdraw(Bank bank) {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        // Check if the account exists or not[m
+[32m+[m[41m    	  [m
+[32m+[m[32m        if (repo.findById(bank.getAccountNumber()).isPresent()) {[m
+[32m+[m[41m            [m
+[32m+[m[32m            Bank holder = repo.findById(bank.getAccountNumber()).get();[m
+[32m+[m[41m            [m
+[32m+[m[32m            // Check  the withdrawal amount is greater than or equal to 500[m
+[32m+[m[41m            [m
+[32m+[m[32m            if (bank.getAmount() >= 500) {[m
+[32m+[m[41m            	[m
+[32m+[m[32m                // Check the account has enough balance[m
+[32m+[m[41m            	[m
+[32m+[m[32m                if (holder.getAmount() >= bank.getAmount()) {[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    // Deduct the withdrawal amount from the balance[m
+[32m+[m[41m                	[m
+[32m+[m[32m                    holder.setAmount(holder.getAmount() - bank.getAmount());[m
+[32m+[m[41m                    [m
+[32m+[m[41m                    [m
+[32m+[m[32m                 // Create a new withdrawal transaction entry[m
+[32m+[m[32m                    TransactionHistory transactionDetail = new TransactionHistory();[m
+[32m+[m[32m                    transactionDetail.setTransactionType("Debited");[m
+[32m+[m[32m                    transactionDetail.setAmount(bank.getAmount());[m[41m  [m
+[32m+[m[32m                    transactionDetail.getTransactionDate();[m
+[32m+[m[32m                    transactionDetail.setAvailableBalance(holder.getAmount());[m[41m  [m
+[32m+[m[32m                    transactionDetail.setDescription("Credited Rs. " + bank.getAmount());[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    // Add transaction to the holder's transaction history[m
+[32m+[m[32m                    holder.addTransaction(transactionDetail);[m[41m  [m
+[32m+[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    // Save the updated account information[m
+[32m+[m[32m                    repo.save(holder);[m
+[32m+[m[41m                 [m
+[32m+[m[41m                    [m
+[32m+[m[32m                    // Initialize Twilio with your Account SID and Auth Token[m
+[32m+[m[32m                    Twilio.init(accountSid, authToken);[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    // Create and send the SMS message using Twilio[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    try {[m
+[32m+[m[32m                        // Mask the account number (last 4 digits)[m
+[32m+[m[41m                    	[m
+[32m+[m[32m                        String maskedAccountNumber = "A/c *" + String.valueOf(holder.getAccountNumber()).substring(String.valueOf(holder.getAccountNumber()).length() - 4);[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        // Get current date and time[m
+[32m+[m[32m                        LocalDate currentDate = LocalDate.now();[m
+[32m+[m[32m                        LocalTime currentTime = LocalTime.now();[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        // Format date and time for the message[m
+[32m+[m[32m                        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");[m
+[32m+[m[32m                        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        String formattedDate = currentDate.format(dateFormatter);[m
+[32m+[m[32m                        String formattedTime = currentTime.format(timeFormatter);[m
+[32m+[m[41m                        [m
+[32m+[m[32m                        // Create and send the SMS message[m
+[32m+[m[32m                        Message message = Message.creator([m
+[32m+[m[41m                        		[m
+[32m+[m[41m                        [m		[32mnew PhoneNumber("+919963446813"),[m
+[32m+[m[41m                        		[m
+[32m+[m[41m                        [m		[32m//new PhoneNumber("+91" + String.valueOf(holder.getMobileNumber())),[m
+[32m+[m[32m                                new PhoneNumber(fromPhoneNumber),[m[41m  [m
+[32m+[m[32m                                maskedAccountNumber + " Debited for Rs:" + bank.getAmount() +[m
+[32m+[m[32m                                " on " + formattedDate + " " + formattedTime +[m
+[32m+[m[32m                                " Avl Bal Rs:" + holder.getAmount() +[m
+[32m+[m[32m                                ". If not you, Call " + fromPhoneNumber + " - USA Bank"[m
+[32m+[m[32m                        ).create();[m
+[32m+[m[41m                        [m
+[32m+[m[32m                    } catch (ApiException e) {[m
+[32m+[m[41m                       [m
+[32m+[m[41m                    	[m
+[32m+[m[41m                    	[m
+[32m+[m[32m                        return "Withdrawal successful, but we couldn't send you an SMS notification."+e.getMessage();[m
+[32m+[m[32m                    }[m
+[32m+[m[41m                    [m
+[32m+[m[41m                    [m
+[32m+[m[32m                    return "Amount withdrawal is completed. Your Balance is: " + holder.getAmount();[m
+[32m+[m[41m                    [m
+[32m+[m[32m                }[m[41m [m
+[32m+[m[32m                else {[m
+[32m+[m[41m                	[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    return "Insufficient balance for the withdrawal. Available balance: " + holder.getAmount();[m
+[32m+[m[32m                }[m
+[32m+[m[32m            }[m[41m [m
+[32m+[m[32m            else {[m
+[32m+[m[41m                [m
+[32m+[m[32m                return "Your withdrawal amount must be above Rs. 500";[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m[41m [m
+[32m+[m[32m        else {[m
+[32m+[m[41m           [m
+[32m+[m[32m            return "This account number does not exist: " + bank.getAccountNumber();[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m    // Method for Deposit amount[m[41m [m
+[32m+[m
+[32m+[m[32m    public String deposit(Bank bank) {[m
+[32m+[m[41m    	[m
+[32m+[m[41m    [m	[32m // Check if the account exists in the Bank Holder Accounts[m
+[32m+[m[32m        if (repo.findById(bank.getAccountNumber()).isPresent()) {[m
+[32m+[m[41m            [m
+[32m+[m[32m            // Check if the Deposit amount is greater than or equal to 500[m
+[32m+[m[32m            if (bank.getAmount() >= 500) {[m
+[32m+[m[41m                [m
+[32m+[m[32m                Bank holder = repo.findById(bank.getAccountNumber()).get();[m
+[32m+[m[41m                [m
+[32m+[m[32m                // Deduct the Deposit amount from the balance[m
+[32m+[m[32m                holder.setAmount(holder.getAmount() + bank.getAmount());[m
+[32m+[m[41m                [m
+[32m+[m[32m                // Create a TransactionHistory object for the deposit transaction[m
+[32m+[m[41m                [m
+[32m+[m[32m                TransactionHistory transaction = new TransactionHistory();[m
+[32m+[m[32m                transaction.setTransactionType("Credit");[m
+[32m+[m[32m                transaction.setAmount(bank.getAmount());[m
+[32m+[m[32m                transaction.setTransactionDate(LocalDateTime.now());[m
+[32m+[m[32m                transaction.setAvailableBalance(holder.getAmount());[m
+[32m+[m[32m                transaction.setDescription("Credited Rs. " + bank.getAmount());[m
+[32m+[m
+[32m+[m[32m                // Add the transaction to the holder's transaction list[m
+[32m+[m[32m                holder.addTransaction(transaction);[m
+[32m+[m[41m                [m
+[32m+[m[32m                // Save the updated account information[m
+[32m+[m[32m                repo.save(holder);[m
+[32m+[m[41m                [m
+[32m+[m[32m             // Initialize Twilio with your Account SID and Auth Token[m
+[32m+[m[32m                Twilio.init(accountSid, authToken);[m
+[32m+[m[41m                [m
+[32m+[m[32m             // Create and send the SMS message using Twilio[m
+[32m+[m[32m                try {[m
+[32m+[m[32m                    // Mask the account number (last 4 digits)[m
+[32m+[m[32m                    String maskedAccountNumber = "A/c *" + String.valueOf(holder.getAccountNumber()).substring(String.valueOf(holder.getAccountNumber()).length() - 4);[m
+[32m+[m[41m                    [m
+[32m+[m[41m                   [m
+[32m+[m[32m                    LocalDate currentDate = LocalDate.now();[m
+[32m+[m[32m                    LocalTime currentTime = LocalTime.now();[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    // Format date and time for the message[m
+[32m+[m[32m                    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");[m
+[32m+[m[32m                    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    String formattedDate = currentDate.format(dateFormatter);[m
+[32m+[m[32m                    String formattedTime = currentTime.format(timeFormatter);[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    // Create and send the SMS message[m
+[32m+[m[32m                    Message message = Message.creator([m
+[32m+[m[41m                    		[m
+[32m+[m[41m                    [m		[32mnew PhoneNumber("+919963446813"),[m
+[32m+[m[41m                    [m		[32m//new PhoneNumber("+91" + String.valueOf(holder.getMobileNumber())),[m
+[32m+[m[32m                            new PhoneNumber(fromPhoneNumber),[m[41m [m
+[32m+[m[32m                            maskedAccountNumber + " Credited for Rs:" + bank.getAmount() +[m
+[32m+[m[32m                            " on " + formattedDate + " " + formattedTime +[m
+[32m+[m[32m                            " Avl Bal Rs:" + holder.getAmount() +[m
+[32m+[m[32m                            ". If not you, Call " + fromPhoneNumber + " - USA Bank"[m
+[32m+[m[32m                    ).create();[m
+[32m+[m[41m                    [m
+[32m+[m[32m                }[m
+[32m+[m[32m                catch (ApiException e) {[m
+[32m+[m[41m                   [m
+[32m+[m[41m                	[m
+[32m+[m[41m                	[m
+[32m+[m[32m                    return "Deposited successful, but we couldn't send you an SMS notification."+e.getMessage();[m
+[32m+[m[41m                    [m
+[32m+[m[32m                }[m
+[32m+[m[41m                [m
+[32m+[m[41m                [m
+[32m+[m[32m                return "Amount Deposit is completed. Your Balance is: " + holder.getAmount();[m
+[32m+[m[41m            [m
+[32m+[m[32m            }[m
+[32m+[m[32m            else {[m
+[32m+[m[41m            	[m
+[32m+[m[32m                return "Your Deposit amount must be above Rs. 500";[m
+[32m+[m[32m            }[m
+[32m+[m[41m            [m
+[32m+[m[32m        }[m
+[32m+[m[32m        else {[m
+[32m+[m[41m        	[m
+[32m+[m[41m        [m	[32mreturn "This account number does not exist: " + bank.getAccountNumber();[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m // Balance Enquire[m
+[32m+[m[41m    [m
+[32m+[m[32m    public String balanceEnquire(CheckBalance bal) {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        // Check if the account number exists in the repository[m
+[32m+[m[32m        Optional<Bank> holderOptional = repo.findById(bal.getAccountNumber());[m
+[32m+[m
+[32m+[m[32m        if (holderOptional.isPresent()) {[m
+[32m+[m[32m            Bank holder = holderOptional.get();[m
+[32m+[m
+[32m+[m[32m            // Validate the mobile number[m
+[32m+[m[32m            if (holder.getMobileNumber() == bal.getMobileNumber()) {[m
+[32m+[m[41m            	[m
+[32m+[m[41m                [m
+[32m+[m[32m                return "The available balance is Rs. " + holder.getAmount();[m
+[32m+[m[32m            }[m
+[32m+[m[32m            else {[m
+[32m+[m[32m                return "The provided mobile number does not match the registered mobile number.";[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m[32m        else {[m
+[32m+[m[32m            return "The account number does not exist.";[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m// Method for transfer money[m[41m [m
+[32m+[m[41m    [m
+[32m+[m[32m    public String transferMoney(TransferAmount transfer) {[m
+[32m+[m[41m        [m
+[32m+[m[32m        // Check if 'from' account exists[m
+[32m+[m[32m        if (repo.findById(transfer.getFromAccountNumber()).isPresent()) {[m
+[32m+[m[41m            [m
+[32m+[m[32m            // Check if 'to' account exists[m
+[32m+[m[32m            if (repo.findById(transfer.getToAccountNumber()).isPresent()) {[m
+[32m+[m[41m                [m
+[32m+[m[32m                Bank from = repo.findById(transfer.getFromAccountNumber()).get();[m
+[32m+[m[41m                [m
+[32m+[m[32m                // Validate sender's name and mobile number[m
+[32m+[m[32m                if (from.getName().equals(transfer.getName())) {[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    if (from.getMobileNumber()==(transfer.getMobileNumber())) {[m[41m  [m
+[32m+[m[41m                        [m
+[32m+[m[32m                        Bank to = repo.findById(transfer.getToAccountNumber()).get();[m
+[32m+[m[41m                        [m
+[32m+[m[41m                        [m
+[32m+[m[32m                        if (from.getAmount() >= transfer.getAmount()) {[m
+[32m+[m[41m                            [m
+[32m+[m[41m                            [m
+[32m+[m[32m                            from.setAmount(from.getAmount() - transfer.getAmount());[m[41m  [m
+[32m+[m[32m                            to.setAmount(to.getAmount() + transfer.getAmount());[m[41m  [m
+[32m+[m[41m                            [m
+[32m+[m[41m                            [m
+[32m+[m[32m                         // Create a TransactionHistory object for the sender (from) account[m
+[32m+[m[32m                            TransactionHistory fromTransaction = new TransactionHistory();[m
+[32m+[m[32m                            fromTransaction.setTransactionType("Transfer");[m
+[32m+[m[32m                            fromTransaction.setAmount(transfer.getAmount());[m
+[32m+[m[32m                            fromTransaction.setTransactionDate(LocalDateTime.now());[m
+[32m+[m[32m                            fromTransaction.setAvailableBalance(from.getAmount());[m
+[32m+[m[32m                            fromTransaction.setDescription("Transferred Rs. " + transfer.getAmount() + " to Account " + transfer.getToAccountNumber());[m
+[32m+[m
+[32m+[m[32m                            // Add the transaction to the sender's transaction history[m
+[32m+[m[32m                            from.addTransaction(fromTransaction);[m
+[32m+[m
+[32m+[m[32m                            // Create a TransactionHistory object for the receiver (to) account[m
+[32m+[m[32m                            TransactionHistory toTransaction = new TransactionHistory();[m
+[32m+[m[32m                            toTransaction.setTransactionType("Credit");[m
+[32m+[m[32m                            toTransaction.setAmount(transfer.getAmount());[m
+[32m+[m[32m                            toTransaction.setTransactionDate(LocalDateTime.now());[m
+[32m+[m[32m                            toTransaction.setAvailableBalance(to.getAmount());[m
+[32m+[m[32m                            toTransaction.setDescription("Credited Rs. " + transfer.getAmount() + " from Account " + transfer.getFromAccountNumber());[m
+[32m+[m
+[32m+[m[32m                            // Add the transaction to the receiver's transaction history[m
+[32m+[m[32m                            to.addTransaction(toTransaction);[m
+[32m+[m[41m                            [m
+[32m+[m[32m                            // Save the updated accounts[m
+[32m+[m[32m                            repo.save(from);[m
+[32m+[m[32m                            repo.save(to);[m
+[32m+[m[41m                            [m
+[32m+[m[32m                         // Initialize Twilio with your Account SID and Auth Token[m
+[32m+[m[32m                            Twilio.init(accountSid, authToken);[m
+[32m+[m[41m                            [m
+[32m+[m[32m                            // Send SMS notification to both the sender and receiver[m
+[32m+[m[32m                            sendSmsNotification(from, transfer.getAmount(), "debited");[m
+[32m+[m[32m                            sendSmsNotification(to, transfer.getAmount(), "credited");[m
+[32m+[m[41m                            [m
+[32m+[m[32m                            return "Your transaction is successfully completed.";[m
+[32m+[m[41m                            [m
+[32m+[m[32m                        }[m[41m [m
+[32m+[m[32m                        else {[m
+[32m+[m[32m                            return "Insufficient balance in the sender's account.";[m
+[32m+[m[32m                        }[m
+[32m+[m[41m                        [m
+[32m+[m[32m                    }[m[41m [m
+[32m+[m[32m                    else {[m
+[32m+[m[32m                        return "You entered the wrong mobile number. Please check your registered mobile number.";[m
+[32m+[m[32m                    }[m
+[32m+[m[41m                    [m
+[32m+[m[32m                }[m[41m [m
+[32m+[m[32m                else {[m
+[32m+[m[32m                    return "Your name does not match the account holder name. Please enter the valid name.";[m
+[32m+[m[32m                }[m
+[32m+[m[41m                [m
+[32m+[m[32m            }[m
+[32m+[m[32m            else {[m
+[32m+[m[32m                return "The target account number does not exist in our bank.";[m
+[32m+[m[32m            }[m
+[32m+[m[41m            [m
+[32m+[m[32m        }[m
+[32m+[m[32m        else {[m
+[32m+[m[32m            return "Please check your account number. It does not exist in our bank.";[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    // Helper method to send SMS notifications[m[41m [m
+[32m+[m[41m    [m
+[32m+[m[32m    private void sendSmsNotification(Bank accountHolder, double amount, String transactionType) {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        try {[m
+[32m+[m[41m        	[m
+[32m+[m[32m            // Mask the account number (last 4 digits)[m
+[32m+[m[32m            String maskedAccountNumber = "A/c *" + String.valueOf(accountHolder.getAccountNumber()).substring(String.valueOf(accountHolder.getAccountNumber()).length() - 4);[m
+[32m+[m[41m            [m
+[32m+[m[41m            [m
+[32m+[m[32m            LocalDate currentDate = LocalDate.now();[m
+[32m+[m[32m            LocalTime currentTime = LocalTime.now();[m
+[32m+[m[41m            [m
+[32m+[m[41m            [m
+[32m+[m[32m            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");[m
+[32m+[m[32m            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");[m
+[32m+[m[41m            [m
+[32m+[m[32m            String formattedDate = currentDate.format(dateFormatter);[m
+[32m+[m[32m            String formattedTime = currentTime.format(timeFormatter);[m
+[32m+[m[41m            [m
+[32m+[m[32m            // Create and send the SMS message using Twilio[m
+[32m+[m[32m            Message message = Message.creator([m
+[32m+[m[41m            		[m
+[32m+[m[41m            [m		[32mnew PhoneNumber("+919963446813"),[m
+[32m+[m[32m                    //new PhoneNumber("+91" + accountHolder.getMobileNumber()),[m
+[32m+[m[32m                    new PhoneNumber(fromPhoneNumber),[m[41m [m
+[32m+[m[32m                    maskedAccountNumber + " " + transactionType + " for Rs: " + amount +[m
+[32m+[m[32m                    " on " + formattedDate + " " + formattedTime +[m
+[32m+[m[32m                    " Avl Bal Rs: " + accountHolder.getAmount() +[m
+[32m+[m[32m                    ". If not you, Call " + fromPhoneNumber + " - USA Bank"[m
+[32m+[m[32m            ).create();[m
+[32m+[m[41m            [m
+[32m+[m[32m        }[m
+[32m+[m[32m        catch (ApiException e) {[m
+[32m+[m[41m        	[m
+[32m+[m[41m            [m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m // Method to generate transaction statement PDF and send via email[m
+[32m+[m[41m    [m
+[32m+[m[32m    public void transactionStatement(Statement statement) throws IOException {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        // Fetch bank details and transaction history[m
+[32m+[m[32m        Bank bank = getBankDetails(statement);[m
+[32m+[m[32m        List<TransactionHistory> transactions = bank.getTransactionHistory();[m
+[32m+[m[32m        String recipientEmail = bank.getEmail();[m[41m [m
+[32m+[m
+[32m+[m[32m        try (ByteArrayOutputStream baos = new ByteArrayOutputStream();[m
+[32m+[m[32m             PdfWriter writer = new PdfWriter(baos);[m
+[32m+[m[32m             PdfDocument pdfDoc = new PdfDocument(writer);[m
+[32m+[m[41m        		[m
+[32m+[m[32m             Document document = new Document(pdfDoc)) {[m
+[32m+[m
+[32m+[m[32m            pdfDoc.setDefaultPageSize(PageSize.A4); // Set the page size[m
+[32m+[m
+[32m+[m[32m            // Add logo and heading[m
+[32m+[m[32m            addLogoAndHeading(document);[m
+[32m+[m
+[32m+[m[32m            // Add account details section[m
+[32m+[m[32m            addAccountDetails(document, bank);[m
+[32m+[m
+[32m+[m[32m            // Add transactions table[m
+[32m+[m[32m            addTransactionsTable(document, transactions);[m
+[32m+[m
+[32m+[m[32m            // Close the document[m
+[32m+[m[32m            document.close();[m
+[32m+[m
+[32m+[m[32m            // Send the generated PDF as an email attachment[m
+[32m+[m[32m            sendEmailWithAttachment(baos.toByteArray(), recipientEmail);[m
+[32m+[m[32m        } catch (Exception e) {[m
+[32m+[m[32m            System.err.println("Error generating transaction statement: " + e.getMessage());[m
+[32m+[m[32m            e.printStackTrace();[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    private void addLogoAndHeading(Document document) {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        String logoPath = "C:\\Users\\UDAY KIRAN\\Pictures\\bank\\logo.png";[m
+[32m+[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            // Create the logo image[m
+[32m+[m[32m            Image logo = new Image(ImageDataFactory.create(logoPath))[m
+[32m+[m[32m                    .setWidth(100)[m
+[32m+[m[32m                    .setHeight(50)[m
+[32m+[m[32m                    .setHorizontalAlignment(HorizontalAlignment.CENTER);[m
+[32m+[m
+[32m+[m[32m            // Create a table for logo and heading[m
+[32m+[m[41m            [m
+[32m+[m[32m            float[] columnWidths = {1, 3};[m
+[32m+[m[32m            Table logoAndHeadingTable = new Table(columnWidths).setWidth(UnitValue.createPercentValue(100));[m
+[32m+[m
+[32m+[m[32m            // Add logo[m
+[32m+[m[32m            logoAndHeadingTable.addCell(new Cell()[m
+[32m+[m[32m                    .add(logo)[m
+[32m+[m[32m                    .setBorder(Border.NO_BORDER)[m
+[32m+[m[32m                    .setVerticalAlignment(VerticalAlignment.MIDDLE)[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    .setHeight(150)[m
+[32m+[m[32m                    .setWidth(100)[m
+[32m+[m[41m            [m		[32m);[m[41m [m
+[32m+[m
+[32m+[m[32m            // Add heading[m
+[32m+[m[32m            logoAndHeadingTable.addCell(new Cell()[m
+[32m+[m[32m                    .add(new Paragraph("Details of Statement")[m
+[32m+[m[32m                            .setFontSize(16)[m
+[32m+[m[32m                            .setBold()[m
+[32m+[m[32m                            .setTextAlignment(TextAlignment.LEFT))[m
+[32m+[m[32m                    .setFontColor(new DeviceRgb(0, 0, 139))[m[41m [m
+[32m+[m[32m                    .setBorder(Border.NO_BORDER)[m
+[32m+[m[32m                    .setVerticalAlignment(VerticalAlignment.MIDDLE)[m
+[32m+[m[32m                    .setPadding(10)[m
+[32m+[m[41m        [m
+[32m+[m[41m            [m		[32m);[m[41m [m
+[32m+[m[41m            [m
+[32m+[m[32m            // Add the table to the document[m
+[32m+[m[32m            document.add(logoAndHeadingTable);[m
+[32m+[m[32m            document.add(new Paragraph("\n"));[m
+[32m+[m[32m        } catch (MalformedURLException e) {[m
+[32m+[m[41m            [m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    private void addAccountDetails(Document document, Bank bank) {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        // Create a table for account details[m
+[32m+[m[32m        Table detailsTable = new Table(1);[m
+[32m+[m
+[32m+[m[32m        // Add account holder name[m
+[32m+[m[32m        detailsTable.addCell(createStyledCell("Account Holder  : " + bank.getName())[m
+[32m+[m[41m        [m		[32m.setBackgroundColor(new DeviceRgb(35, 101, 139))[m
+[32m+[m[41m        [m		[32m.setFontColor(new DeviceRgb(255, 255, 255))[m
+[32m+[m[41m        [m		[32m);[m
+[32m+[m
+[32m+[m[32m        // Add account number[m
+[32m+[m[32m        detailsTable.addCell(createStyledCell("Account Number  : " + bank.getAccountNumber())[m
+[32m+[m[41m        [m		[32m.setBackgroundColor(new DeviceRgb(35, 101, 139))[m
+[32m+[m[41m        [m		[32m.setFontColor(new DeviceRgb(255, 255, 255))[m
+[32m+[m[41m        [m		[32m);[m
+[32m+[m
+[32m+[m[32m        // Add email[m
+[32m+[m[32m        detailsTable.addCell(createStyledCell("Email  : " + bank.getEmail())[m
+[32m+[m[41m        [m		[32m.setBackgroundColor(new DeviceRgb(35, 101, 139))[m
+[32m+[m[41m        [m		[32m.setFontColor(new DeviceRgb(255, 255, 255))[m
+[32m+[m[41m        [m		[32m);[m
+[32m+[m
+[32m+[m[32m        // Add the table to the document[m
+[32m+[m[32m        document.add(detailsTable);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[32m    private Cell createStyledCell(String content) {[m
+[32m+[m[32m        return new Cell()[m
+[32m+[m[32m                .add(new Paragraph(content)[m
+[32m+[m[32m                        .setFontSize(12)[m
+[32m+[m[32m                        .setTextAlignment(TextAlignment.LEFT))[m
+[32m+[m[32m                .setPadding(5)[m
+[32m+[m[32m                .setBorder(new SolidBorder(1));[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    private void addTransactionsTable(Document document, List<TransactionHistory> transactions) {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        // Define column widths for the table[m
+[32m+[m[32m        float[] columnWidths = {1, 2, 2, 1, 2, 3};[m
+[32m+[m[32m        Table table = new Table(columnWidths);[m
+[32m+[m
+[32m+[m[32m        document.add(new Paragraph("\n"));[m
+[32m+[m[32m        document.add(new Paragraph("\n"));[m
+[32m+[m[41m        [m
+[32m+[m[41m        [m
+[32m+[m[32m        // Add table headers[m
+[32m+[m[32m        String[] headers = {"S.No", "Date","Transaction ID", "Transaction Type", "Amount", "Available Balance"};[m
+[32m+[m[32m        for (String header : headers) {[m
+[32m+[m[32m            table.addCell(new Cell()[m
+[32m+[m[32m                    .add(new Paragraph(header))[m
+[32m+[m[32m                    .setTextAlignment(TextAlignment.CENTER)[m
+[32m+[m[32m                    .setBackgroundColor(new DeviceRgb( 35, 101, 139))[m[41m [m
+[32m+[m[32m                    .setFontColor(new DeviceRgb(255, 255, 255)));[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        // Add transaction rows[m
+[32m+[m[32m        int serialNumber = 1;[m
+[32m+[m[32m        for (TransactionHistory transaction : transactions) {[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph(String.valueOf(serialNumber++)).setTextAlignment(TextAlignment.CENTER)));[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph([m
+[32m+[m[32m                    transaction.getTransactionDate() != null ? transaction.getTransactionDate().toString() : "N/A")));[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph(" " + transaction.getTransactionId())));[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph(transaction.getTransactionType() != null ? transaction.getTransactionType() : "N/A")));[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph(" " + transaction.getAmount())));[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph("Rs. " + transaction.getAvailableBalance())));[m
+[32m+[m[41m            [m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        // Add the table to the document[m
+[32m+[m[32m        document.add(table);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    // Method to send the email with PDF attachment[m
+[32m+[m[41m    [m
+[32m+[m[32m    private void sendEmailWithAttachment(byte[] pdfBytes, String recipientEmail) {[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            // Create a MimeMessage[m
+[32m+[m[32m            MimeMessage mimeMessage = mailSender.createMimeMessage();[m
+[32m+[m[32m            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);[m
+[32m+[m
+[32m+[m[32m            // Set email properties[m
+[32m+[m[32m            helper.setTo(recipientEmail);[m
+[32m+[m[32m            helper.setSubject("Your Transaction Statement");[m
+[32m+[m[32m            helper.setText("Dear Customer,\n\nPlease find attached your transaction statement in PDF format.\n\nBest regards,\nYour Bank");[m
+[32m+[m
+[32m+[m[32m            // Attach the PDF[m
+[32m+[m[32m            helper.addAttachment("Transaction_Statement.pdf", new ByteArrayResource(pdfBytes));[m
+[32m+[m
+[32m+[m[32m            // Send the email[m
+[32m+[m[32m            mailSender.send(mimeMessage);[m
+[32m+[m
+[32m+[m[32m            System.out.println("Transaction statement email sent successfully!");[m
+[32m+[m[32m        } catch (Exception e) {[m
+[32m+[m[32m            e.printStackTrace();[m
+[32m+[m[32m            System.err.println("Error sending email: " + e.getMessage());[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    // Placeholder method for fetching bank details[m
+[32m+[m[41m    [m
+[32m+[m[32m    public Bank getBankDetails(Statement statement) {[m
+[32m+[m[32m        Optional<Bank> optionalBank = repo.findById(statement.getAccountNumber());[m
+[32m+[m[32m        if (optionalBank.isPresent()) {[m
+[32m+[m[32m            return optionalBank.get();[m[41m  [m
+[32m+[m[32m        } else {[m
+[32m+[m[32m            throw new IllegalArgumentException("Account with number " + statement.getAccountNumber() + " not found.");[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m // Method to generate a Mini Statement PDF and send via email[m
+[32m+[m[41m    [m
+[32m+[m[32m    public void generateMiniStatement(Statement statement) throws IOException {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        // Fetch bank details and transaction history[m
+[32m+[m[32m        Bank bank = getBankDetails(statement);[m
+[32m+[m[32m        List<TransactionHistory> transactions = bank.getTransactionHistory();[m
+[32m+[m[32m        String recipientEmail = bank.getEmail();[m[41m [m
+[32m+[m
+[32m+[m[32m        // Fetch last 5 transactions or fewer[m
+[32m+[m[32m        List<TransactionHistory> miniTransactions = getMiniTransactions(transactions);[m
+[32m+[m
+[32m+[m[32m        try (ByteArrayOutputStream baos = new ByteArrayOutputStream();[m
+[32m+[m[32m             PdfWriter writer = new PdfWriter(baos);[m
+[32m+[m[32m             PdfDocument pdfDoc = new PdfDocument(writer);[m
+[32m+[m[32m             Document document = new Document(pdfDoc)) {[m
+[32m+[m
+[32m+[m[32m            pdfDoc.setDefaultPageSize(PageSize.A4);[m[41m [m
+[32m+[m
+[32m+[m[32m            // Add logo and heading[m
+[32m+[m[32m            addMiniStatementLogoAndHeading(document);[m
+[32m+[m
+[32m+[m[32m            // Add account details section[m
+[32m+[m[32m            addAccountDetails(document, bank);[m
+[32m+[m
+[32m+[m[32m            // Add mini transactions table[m
+[32m+[m[32m            addMiniTransactionsTable(document, miniTransactions);[m
+[32m+[m
+[32m+[m[32m            // Close the document[m
+[32m+[m[32m            document.close();[m
+[32m+[m
+[32m+[m[32m            // Send the generated PDF as an email attachment[m
+[32m+[m[32m            ministatementMail(baos.toByteArray(), recipientEmail);[m
+[32m+[m[32m        } catch (Exception e) {[m
+[32m+[m[41m            [m
+[32m+[m[32m            e.printStackTrace();[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    // Fetch last 5 transactions or fewer[m
+[32m+[m[32m    private List<TransactionHistory> getMiniTransactions(List<TransactionHistory> transactions) {[m
+[32m+[m[32m        int transactionCount = transactions.size();[m
+[32m+[m[32m        return transactionCount <= 5 ? transactions : transactions.subList(transactionCount - 5, transactionCount);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[32m    // Add a logo and heading specific to the Mini Statement[m
+[32m+[m[41m    [m
+[32m+[m[32m    private void addMiniStatementLogoAndHeading(Document document) {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        String logoPath = "C:\\Users\\UDAY KIRAN\\Pictures\\bank\\logo.png";[m
+[32m+[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            // Create the logo image[m
+[32m+[m[32m            Image logo = new Image(ImageDataFactory.create(logoPath))[m
+[32m+[m[32m                    .setWidth(100)[m
+[32m+[m[32m                    .setHeight(50)[m
+[32m+[m[32m                    .setHorizontalAlignment(HorizontalAlignment.CENTER);[m
+[32m+[m
+[32m+[m[32m            // Create a table for logo and heading[m
+[32m+[m[32m            float[] columnWidths = {1, 3};[m
+[32m+[m[32m            Table logoAndHeadingTable = new Table(columnWidths).setWidth(UnitValue.createPercentValue(100));[m
+[32m+[m
+[32m+[m[32m            // Add logo[m
+[32m+[m[32m            logoAndHeadingTable.addCell(new Cell()[m
+[32m+[m[32m                    .add(logo)[m
+[32m+[m[32m                    .setBorder(Border.NO_BORDER)[m
+[32m+[m[32m                    .setVerticalAlignment(VerticalAlignment.MIDDLE));[m
+[32m+[m
+[32m+[m[32m            // Add heading[m
+[32m+[m[32m            logoAndHeadingTable.addCell(new Cell()[m
+[32m+[m[32m                    .add(new Paragraph("Mini Transaction Statement")[m
+[32m+[m[32m                            .setFontSize(16)[m
+[32m+[m[32m                            .setBold()[m
+[32m+[m[32m                            .setTextAlignment(TextAlignment.LEFT))[m
+[32m+[m[32m                    .setFontColor(new DeviceRgb(0, 0, 139)) // Dark blue color[m
+[32m+[m[32m                    .setBorder(Border.NO_BORDER)[m
+[32m+[m[32m                    .setVerticalAlignment(VerticalAlignment.MIDDLE)[m
+[32m+[m[32m                    .setPadding(10));[m
+[32m+[m
+[32m+[m[32m            // Add the table to the document[m
+[32m+[m[32m            document.add(logoAndHeadingTable);[m
+[32m+[m[32m            document.add(new Paragraph("\n"));[m
+[32m+[m[32m        } catch (MalformedURLException e) {[m
+[32m+[m[32m            System.err.println("Error: Unable to load the logo image from the specified path.");[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    // Add a transactions table for Mini Statement[m
+[32m+[m[41m    [m
+[32m+[m[32m    private void addMiniTransactionsTable(Document document, List<TransactionHistory> transactions) {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        // Define column widths for the table[m
+[32m+[m[32m        float[] columnWidths = {1, 2, 2, 1, 2, 3};[m
+[32m+[m[32m        Table table = new Table(columnWidths);[m
+[32m+[m
+[32m+[m[32m        document.add(new Paragraph("\n"));[m
+[32m+[m
+[32m+[m[32m        // Add table headers[m
+[32m+[m[32m        String[] headers = {"S.No", "Date","Transaction ID", "Transaction Type", "Amount", "Available Balance"};[m
+[32m+[m[32m        for (String header : headers) {[m
+[32m+[m[32m            table.addCell(new Cell()[m
+[32m+[m[32m                    .add(new Paragraph(header))[m
+[32m+[m[32m                    .setTextAlignment(TextAlignment.CENTER)[m
+[32m+[m[32m                    .setBackgroundColor(new DeviceRgb(35, 101, 139))[m[41m [m
+[32m+[m[32m                    .setFontColor(new DeviceRgb(255, 255, 255)));[m[41m [m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        // Add transaction rows[m
+[32m+[m[32m        int serialNumber = 1;[m
+[32m+[m[32m        for (TransactionHistory transaction : transactions) {[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph(String.valueOf(serialNumber++)).setTextAlignment(TextAlignment.CENTER)));[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph([m
+[32m+[m[32m                    transaction.getTransactionDate() != null ? transaction.getTransactionDate().toString() : "N/A")));[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph(" " + transaction.getTransactionId())));[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph(transaction.getTransactionType() != null ? transaction.getTransactionType() : "N/A")));[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph(" " + transaction.getAmount())));[m
+[32m+[m[32m            table.addCell(new Cell().add(new Paragraph("Rs. " + transaction.getAvailableBalance())));[m
+[32m+[m[41m           [m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        // Add the table to the document[m
+[32m+[m[32m        document.add(table);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[32m    // Method to send the email with PDF attachment[m
+[32m+[m[32m    private void ministatementMail(byte[] pdfBytes, String recipientEmail) {[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            // Create a MimeMessage[m
+[32m+[m[32m            MimeMessage mimeMessage = mailSender.createMimeMessage();[m
+[32m+[m[32m            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);[m
+[32m+[m
+[32m+[m[32m            // Set email properties[m
+[32m+[m[32m            helper.setTo(recipientEmail);[m
+[32m+[m[32m            helper.setSubject("Your Mini Transaction Statement");[m
+[32m+[m[32m            helper.setText("Dear Customer,\n\nPlease find attached your mini transaction statement in PDF format.\n\nBest regards,\nYour Crest Bank");[m
+[32m+[m
+[32m+[m[32m            // Attach the PDF[m
+[32m+[m[32m            helper.addAttachment("Mini_Transaction_Statement.pdf", new ByteArrayResource(pdfBytes));[m
+[32m+[m
+[32m+[m[32m            // Send the email[m
+[32m+[m[32m            mailSender.send(mimeMessage);[m
+[32m+[m
+[32m+[m[32m            System.out.println("Mini transaction statement email sent successfully!");[m
+[32m+[m[32m        } catch (Exception e) {[m
+[32m+[m[32m            e.printStackTrace();[m
+[32m+[m[32m            System.err.println("Error sending email: " + e.getMessage());[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[41m   [m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m // Method to update account details[m
+[32m+[m[41m    [m
+[32m+[m[32m    public Bank updateAccount(UpdateAccount account) {[m
+[32m+[m[41m        [m
+[32m+[m[32m        // Verify that the account exists[m
+[32m+[m[32m        Optional<Bank> holder = repo.findById(account.getAccountNumber());[m
+[32m+[m[32m        if (!holder.isPresent()) {[m
+[32m+[m[32m            throw new IllegalArgumentException("Account number " + account.getAccountNumber() + " does not exist.");[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        // Verify that the email exists and matches[m
+[32m+[m[32m        if (!repo.findByEmail(account.getEmail()).isPresent()) {[m
+[32m+[m[32m            throw new IllegalArgumentException("Email " + account.getEmail() + " does not exist. Please provide the correct email.");[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        // Verify that the Aadhaar number exists and matches[m
+[32m+[m[32m        if (!repo.findByAdharnumber(account.getAdharnumber()).isPresent()) {[m
+[32m+[m[32m            throw new IllegalArgumentException("Aadhaar number " + account.getAdharnumber() + " does not exist. Please provide the correct Aadhaar number.");[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        // Update the account details[m
+[32m+[m[32m        Bank person = holder.get();[m
+[32m+[m[32m        person.setName(account.getName());[m
+[32m+[m[32m        person.setFatherName(account.getFatherName());[m
+[32m+[m[32m        person.setAge(account.getAge());[m
+[32m+[m[32m        person.setEmail(account.getEmail());[m
+[32m+[m[32m        person.setAddress(account.getAddress());[m
+[32m+[m[32m        person.setDateOfBirth(account.getDateOfBirth());[m
+[32m+[m[32m        person.setDistrict(account.getDistrict());[m
+[32m+[m[32m        person.setState(account.getState());[m
+[32m+[m[32m        person.setMobileNumber(account.getMobileNumber());[m
+[32m+[m
+[32m+[m[32m        Bank savedBank = repo.save(person);[m[41m [m
+[32m+[m
+[32m+[m[32m        // Send email to confirm the update[m
+[32m+[m[41m        [m
+[32m+[m[32m        try {[m
+[32m+[m[41m        	[m
+[32m+[m[32m            // Initialize the email message[m
+[32m+[m[32m            SimpleMailMessage message = new SimpleMailMessage();[m
+[32m+[m[32m            message.setTo(account.getEmail());[m
+[32m+[m[32m            message.setSubject("Your Account Has Been Updated Successfully");[m
+[32m+[m
+[32m+[m[32m            // Build the primary email body for account update confirmation[m
+[32m+[m[32m            String emailBody = "Dear " + savedBank.getName() + ",\n\n" +[m
+[32m+[m[32m                    "Your account details have been successfully updated.\n\n" +[m
+[32m+[m[32m                    "Updated Account Information:\n" +[m
+[32m+[m[32m                    "Account Holder Name: " + savedBank.getName() + "\n" +[m
+[32m+[m[32m                    "Account Number: " + savedBank.getAccountNumber() + "\n" +[m
+[32m+[m[32m                    "IFSC Code: " + savedBank.getIfsc() + "\n" +[m
+[32m+[m[32m                    "Branch: " + savedBank.getBranch() + "\n" +[m
+[32m+[m[32m                    "District: " + savedBank.getDistrict() + "\n" +[m
+[32m+[m[32m                    "State: " + savedBank.getState() + "\n" +[m
+[32m+[m[32m                    "Mobile Number: " + savedBank.getMobileNumber() + "\n" +[m
+[32m+[m[32m                    "Address: " + savedBank.getAddress() + "\n" +[m
+[32m+[m[32m                    "Father's Name: " + savedBank.getFatherName() + "\n" +[m
+[32m+[m[32m                    "Pin Code: " + savedBank.getPinCode() + "\n" +[m
+[32m+[m[32m                    "Please keep this information secure.\n\n" +[m
+[32m+[m[32m                    "Best regards,\n" +[m
+[32m+[m[32m                    "USA Bank";[m
+[32m+[m
+[32m+[m[32m            message.setText(emailBody);[m
+[32m+[m[32m            mailSender.send(message);[m[41m [m
+[32m+[m
+[32m+[m[32m            // If an ATM card was created, send ATM details[m
+[32m+[m[41m            [m
+[32m+[m[32m            if ("yes".equals(savedBank.getNeedsAtm()) && savedBank.getAtmNumber() != 0) {[m
+[32m+[m[41m            	[m
+[32m+[m[32m                // Create ATM details email content[m
+[32m+[m[41m            	[m
+[32m+[m[32m                String emailForATM = "Dear " + savedBank.getName() + ",\n\n" +[m
+[32m+[m[32m                        "Your ATM card has been successfully created.\n\n" +[m
+[32m+[m[32m                        "ATM Card Details:\n" +[m
+[32m+[m[32m                        "ATM Card Number: " + savedBank.getAtmNumber() + "\n" +[m
+[32m+[m[32m                        "ATM PIN: Not set (please set your PIN at the ATM machine)\n" +[m
+[32m+[m[32m                        "Please keep this information secure.\n\n" +[m
+[32m+[m[32m                        "Best regards,\n" +[m
+[32m+[m[32m                        "USA Bank";[m
+[32m+[m
+[32m+[m[32m                // Set new email content and send ATM details[m
+[32m+[m[32m                message.setText(emailForATM);[m
+[32m+[m[32m                mailSender.send(message);[m
+[32m+[m[32m            }[m
+[32m+[m
+[32m+[m[32m        } catch (Exception e) {[m
+[32m+[m[41m            [m
+[32m+[m[32m            throw new RuntimeException("Account updated, but there was an error sending the confirmation email.");[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        return savedBank;[m[41m [m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m
+[32m+[m[32m                                  /* ------------> ATM Implementation <-------------- */[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m // Method to apply for an ATM card[m
+[32m+[m[41m    [m
+[32m+[m[32m    public Bank applyForAtm(ApplyATM app) {[m
+[32m+[m[41m        [m
+[32m+[m[32m        // Retrieve the bank account based on account number[m
+[32m+[m[32m        Optional<Bank> optionalBank = repo.findById(app.getAccountNumber());[m
+[32m+[m[41m        [m
+[32m+[m[32m        if (optionalBank.isPresent()) {[m
+[32m+[m[32m            Bank bank = optionalBank.get();[m
+[32m+[m
+[32m+[m[32m            // Validate the provided name and mobile number to ensure account security[m
+[32m+[m[32m            if (!bank.getName().equals(app.getName()) || bank.getMobileNumber() != app.getMobileNumber()) {[m
+[32m+[m[32m                throw new IllegalArgumentException("Account details do not match. Please verify the account information.");[m
+[32m+[m[32m            }[m
+[32m+[m
+[32m+[m[32m            // Check if ATM card has not been issued previously[m
+[32m+[m[32m            if (bank.getAtmNumber() == 0) {[m[41m  [m
+[32m+[m[41m                [m
+[32m+[m[32m                bank.setNeedsAtm("yes");[m
+[32m+[m[32m                bank.setAtmNumber(AccountNumberGenerator.atmNumberGenarater());[m
+[32m+[m
+[32m+[m[32m                Bank savedBank = repo.save(bank);[m[41m  [m
+[32m+[m[41m                [m
+[32m+[m[32m                // Send email notification about the new ATM card[m
+[32m+[m[41m                [m
+[32m+[m[32m                try {[m
+[32m+[m[32m                    SimpleMailMessage message = new SimpleMailMessage();[m
+[32m+[m[32m                    message.setTo(bank.getEmail());[m
+[32m+[m[32m                    message.setSubject("Your ATM Card is Created Successfully");[m
+[32m+[m
+[32m+[m[32m                    // Construct the email content[m
+[32m+[m[32m                    String emailForATM = "Dear " + bank.getName() + ",\n\n" +[m
+[32m+[m[32m                                         "Congratulations! Your ATM card has been successfully created.\n\n" +[m
+[32m+[m[32m                                         "ATM Card Details:\n" +[m
+[32m+[m[32m                                         "ATM Card Number: " + savedBank.getAtmNumber() + "\n" +[m
+[32m+[m[32m                                         "ATM PIN: Not set (please set your PIN at the ATM machine)\n" +[m
+[32m+[m[32m                                         "Please keep this information secure.\n\n" +[m
+[32m+[m[32m                                         "Best regards,\n" +[m
+[32m+[m[32m                                         "USA Bank";[m
+[32m+[m
+[32m+[m[32m                    message.setText(emailForATM);[m
+[32m+[m[32m                    mailSender.send(message);[m[41m  [m
+[32m+[m
+[32m+[m[32m                } catch (Exception e) {[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    throw new RuntimeException("ATM created successfully, but there was an error sending the email notification.");[m
+[32m+[m[32m                }[m
+[32m+[m
+[32m+[m[32m                return savedBank;[m
+[32m+[m[32m            }[m[41m [m
+[32m+[m[32m            else {[m
+[32m+[m
+[32m+[m[41m            [m	[32mthrow new IllegalStateException("An ATM card already exists for this account.");[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m[41m [m
+[32m+[m[32m        else {[m
+[32m+[m
+[32m+[m[41m        [m	[32mthrow new IllegalArgumentException("Account with number " + app.getAccountNumber() + " does not exist.");[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m    // Method to cancel ATM card[m
+[32m+[m[41m    [m
+[32m+[m[32m    public Bank cancelAtm(CancleATM cancle) {[m
+[32m+[m[32m        Optional<Bank> optionalBank = repo.findById(cancle.getAccountNumber());[m
+[32m+[m
+[32m+[m[32m        if (optionalBank.isPresent()) {[m
+[32m+[m[32m            Bank bank = optionalBank.get();[m
+[32m+[m
+[32m+[m[32m            // Validate account number, name, and mobile number[m
+[32m+[m[32m            if (!bank.getName().equals(cancle.getName()) || bank.getMobileNumber() != cancle.getMobileNumber()) {[m
+[32m+[m[32m                throw new IllegalArgumentException("Account details do not match. Please verify the account information.");[m
+[32m+[m[32m            }[m
+[32m+[m
+[32m+[m[32m            if (bank.getAtmNumber() != 0) {[m[41m [m
+[32m+[m[32m                bank.setAtmNumber(0);;[m
+[32m+[m[32m                bank.setNeedsAtm("no");[m
+[32m+[m
+[32m+[m[32m                return repo.save(bank);[m[41m  [m
+[32m+[m[32m            }[m
+[32m+[m[32m            else {[m
+[32m+[m[32m                throw new IllegalStateException("No ATM assigned to this account to cancel.");[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m[32m        else {[m
+[32m+[m[32m            throw new IllegalArgumentException("Account with number " + cancle.getAccountNumber() + " does not exist.");[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[41m      [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m // Temporary storage for OTPs[m
+[32m+[m[41m    [m
+[32m+[m[32m    private final Map<Long, Integer> otpStorage = new ConcurrentHashMap<>();[m[41m [m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m // Method to send OTP[m
+[32m+[m[41m    [m
+[32m+[m[32m public String sendOtp(long atmNumber) {[m
+[32m+[m[41m	 [m
+[32m+[m[32m     Optional<Bank> optionalBank = repo.findByAtmNumber(atmNumber);[m
+[32m+[m
+[32m+[m[32m     if (optionalBank.isPresent()) {[m
+[32m+[m[32m         Bank bank = optionalBank.get();[m
+[32m+[m
+[32m+[m[32m         // Generate and send OTP[m
+[32m+[m[32m         int otp = generateAndSendOtp(bank.getMobileNumber());[m
+[32m+[m[41m         [m
+[32m+[m[32m         // Store the OTP temporarily[m
+[32m+[m[32m         otpStorage.put(atmNumber, otp);[m
+[32m+[m[32m         return "OTP sent successfully to the registered mobile number.";[m
+[32m+[m[32m     } else {[m
+[32m+[m[32m         throw new IllegalArgumentException("ATM number not found.");[m
+[32m+[m[32m     }[m
+[32m+[m[32m }[m
+[32m+[m
+[32m+[m[41m [m
+[32m+[m[32m // method for set pin[m
+[32m+[m[41m [m
+[32m+[m[32m    public Bank setPin(SetAtmPin atm) {[m
+[32m+[m[41m    	[m
+[32m+[m	[32m    // Retrieve the bank account based on the provided ATM number[m
+[32m+[m	[32m    Optional<Bank> optionalBank = repo.findByAtmNumber(atm.getAtmNumber());[m
+[32m+[m
+[32m+[m	[32m    if (optionalBank.isPresent()) {[m
+[32m+[m	[32m        Bank bank = optionalBank.get();[m
+[32m+[m
+[32m+[m[41m	       [m
+[32m+[m
+[32m+[m	[32m        // Validate OTP[m
+[32m+[m	[32m        int storedOtp = otpStorage.get(atm.getAtmNumber());[m
+[32m+[m
+[32m+[m	[32m        if (storedOtp == 0) {[m
+[32m+[m[41m	          [m
+[32m+[m	[32m            throw new IllegalArgumentException("OTP not found or expired. Please request a new OTP.");[m
+[32m+[m	[32m        }[m
+[32m+[m
+[32m+[m	[32m        // Compare the OTP values[m
+[32m+[m	[32m        if (storedOtp != atm.getOtp()) {[m
+[32m+[m[41m	            [m
+[32m+[m	[32m            throw new IllegalArgumentException("Invalid OTP. Please try again.");[m
+[32m+[m	[32m        }[m
+[32m+[m
+[32m+[m	[32m        // If OTP is valid, validate the PIN[m
+[32m+[m	[32m        if (atm.getPin() < 1000 || atm.getPin() > 9999) {[m
+[32m+[m	[32m            throw new IllegalArgumentException("PIN must be a 4-digit number.");[m
+[32m+[m	[32m        }[m
+[32m+[m
+[32m+[m[41m	        [m
+[32m+[m	[32m        // Set the new PIN for the bank account[m
+[32m+[m	[32m        bank.setPin(atm.getPin());[m
+[32m+[m
+[32m+[m	[32m        // Remove OTP from storage after successful validation[m
+[32m+[m	[32m        otpStorage.remove(atm.getAtmNumber());[m
+[32m+[m
+[32m+[m
+[32m+[m	[32m        // Save and return the updated bank account[m
+[32m+[m	[32m        return repo.save(bank);[m
+[32m+[m	[32m    } else {[m
+[32m+[m	[32m        throw new IllegalArgumentException("ATM number not found.");[m
+[32m+[m	[32m    }[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32m // Helper method to generate and send OTP[m
+[32m+[m[41m    [m
+[32m+[m[32m private int generateAndSendOtp(long mobileNumber) {[m
+[32m+[m[41m	 [m
+[32m+[m	[32m// Generate 4-digit OTP[m
+[32m+[m[32m     int otp = 1000 + new Random().nextInt(9999);[m[41m [m
+[32m+[m[32m     Twilio.init(accountSid, authToken);[m
+[32m+[m[32m     try {[m
+[32m+[m[32m         Message.creator([m
+[32m+[m[32m                 new PhoneNumber("+91" + mobileNumber),[m
+[32m+[m[32m                 new PhoneNumber(fromPhoneNumber),[m
+[32m+[m[32m                 "Your OTP for setting ATM PIN is: " + otp + ". Please use it within 5 minutes."[m
+[32m+[m[32m         ).create();[m
+[32m+[m[32m         System.out.println("OTP sent to: " + mobileNumber);[m
+[32m+[m[32m     } catch (Exception e) {[m
+[32m+[m[32m         System.err.println("Error sending OTP: " + e.getMessage());[m
+[32m+[m[32m         throw new IllegalStateException("Failed to send OTP. Please try again.");[m
+[32m+[m[32m     }[m
+[32m+[m[32m     return otp;[m
+[32m+[m[32m }[m
+[32m+[m
+[32m+[m[32m                                /* ----------> Transactions By Using ATM Card <------------ */[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m // Method for withdrawal using ATM card[m
+[32m+[m[41m [m
+[32m+[m[32m    public String withdrawUsingATM(AtmTransactions atm) {[m
+[32m+[m[41m        [m
+[32m+[m[32m        // Retrieve the bank account using the ATM number[m
+[32m+[m[32m        Optional<Bank> optionalBank = repo.findByAtmNumber(atm.getAtmNumber());[m
+[32m+[m
+[32m+[m[32m        if (optionalBank.isPresent()) {[m
+[32m+[m[32m            Bank bank = optionalBank.get();[m
+[32m+[m
+[32m+[m[32m            // Validate the PIN entered by the user[m
+[32m+[m[32m            if (bank.getPin() == atm.getPin()) {[m
+[32m+[m
+[32m+[m[32m                // Check if the account has sufficient balance for the withdrawal[m
+[32m+[m[32m                if (bank.getAmount() >= atm.getAmount()) {[m
+[32m+[m
+[32m+[m[32m                    // Create a new Bank object with the withdrawal amount[m
+[32m+[m[32m                    Bank withdrawalBank = new Bank();[m
+[32m+[m[32m                    withdrawalBank.setAccountNumber(bank.getAccountNumber());[m
+[32m+[m[32m                    withdrawalBank.setAmount(atm.getAmount());[m[41m [m
+[32m+[m[41m                    [m
+[32m+[m
+[32m+[m[32m                    return withdraw(withdrawalBank);[m
+[32m+[m[32m                } else {[m
+[32m+[m
+[32m+[m[41m                [m	[32mreturn "Insufficient balance for the withdrawal. Available balance: " + bank.getAmount();[m
+[32m+[m[32m                }[m
+[32m+[m[32m            } else {[m
+[32m+[m
+[32m+[m[41m            [m	[32mreturn "Invalid PIN. Please try again.";[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m[41m [m
+[32m+[m[32m        else {[m
+[32m+[m
+[32m+[m[41m        [m	[32mreturn "Account with the given ATM number does not exist.";[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m // Method for depositing amount using ATM card[m
+[32m+[m[41m    [m
+[32m+[m[32m    public String depositUsingATM(AtmTransactions atm) {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        // Retrieve the bank account using the ATM number[m
+[32m+[m[41m    [m	[32m Optional<Bank> optionalBank = repo.findByAtmNumber(atm.getAtmNumber());[m
+[32m+[m
+[32m+[m[32m        if (optionalBank.isPresent()) {[m
+[32m+[m[32m            Bank bank = optionalBank.get();[m
+[32m+[m
+[32m+[m[32m            // Validate the PIN entered by the user[m
+[32m+[m[32m            if ((bank.getPin() == atm.getPin())&&(atm.getPin() > 1000 || atm.getPin() < 9999)) {[m[41m [m
+[32m+[m[41m            	[m
+[32m+[m[32m                // Create a new Bank object with the deposit amount[m
+[32m+[m[41m            	[m
+[32m+[m[32m                Bank depositBank = new Bank();[m
+[32m+[m[32m                depositBank.setAccountNumber(bank.getAccountNumber());[m
+[32m+[m[32m                depositBank.setAmount(atm.getAmount());[m[41m [m
+[32m+[m[41m                [m
+[32m+[m[32m                // Call the deposit method and return the message[m
+[32m+[m[32m                return deposit(depositBank);[m[41m [m
+[32m+[m[32m            }[m
+[32m+[m[32m            else {[m
+[32m+[m[32m                return "Invalid PIN. Please try again.";[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m[41m [m
+[32m+[m[32m        else {[m
+[32m+[m[32m            return "Account with the given ATM number does not exist.";[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[32m // Generate Mini Statement using ATM credentials[m
+[32m+[m[41m    [m
+[32m+[m[32m    public void miniStatementByATM(MiniStatementATM atm) throws IOException {[m
+[32m+[m[41m    	[m
+[32m+[m[32m        // Validate ATM number[m
+[32m+[m[32m        Optional<Bank> optionalBank = repo.findByAtmNumber(atm.getAtmNumber());[m
+[32m+[m[32m        if (!optionalBank.isPresent()) {[m
+[32m+[m[32m            throw new IllegalArgumentException("ATM number not found.");[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        Bank bank = optionalBank.get();[m
+[32m+[m
+[32m+[m[32m        // Validate PIN[m
+[32m+[m[32m        if ((bank.getPin() != atm.getPin())&&(atm.getPin() < 1000 || atm.getPin() > 9999)) {[m
+[32m+[m[32m            throw new IllegalArgumentException("Invalid PIN. Please try again.");[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        // Prepare the statement object[m
+[32m+[m[32m        Statement miniStatement = new Statement();[m
+[32m+[m[32m        miniStatement.setAccountNumber(bank.getAccountNumber());[m[41m [m
+[32m+[m
+[32m+[m[32m        // Generate the mini statement[m
+[32m+[m[32m        generateMiniStatement(miniStatement);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[32m    // Method for Balance Enquire By Using ATM[m
+[32m+[m[41m    [m
+[32m+[m[32m     public String balanceEnquireByATM(BalanceEnquireATM atm) {[m
+[32m+[m[41m    	[m
+[32m+[m[41m    [m	[32m Optional<Bank> optionalBank = repo.findByAtmNumber(atm.getAtmNumber());[m
+[32m+[m[32m         if (!optionalBank.isPresent()) {[m
+[32m+[m[32m             throw new IllegalArgumentException("ATM number not found.");[m
+[32m+[m[32m         }[m
+[32m+[m
+[32m+[m[32m         Bank bank = optionalBank.get();[m
+[32m+[m
+[32m+[m[32m         // Validate PIN[m
+[32m+[m[32m         if ((bank.getPin() != atm.getPin())&&(atm.getPin() < 1000 || atm.getPin() > 9999)) {[m
+[32m+[m[32m             throw new IllegalArgumentException("Invalid PIN. Please try again.");[m
+[32m+[m[32m         }[m
+[32m+[m
+[32m+[m[32m         // Prepare the statement object[m
+[32m+[m[32m         CheckBalance check = new CheckBalance();[m
+[32m+[m[32m         check.setAccountNumber(bank.getAccountNumber());[m[41m [m
+[32m+[m[32m         check.setMobileNumber(bank.getMobileNumber());[m
+[32m+[m
+[32m+[m[32m         // Generate the mini statement[m
+[32m+[m[32m         return balanceEnquire(check);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[41m     [m
+[32m+[m[41m     [m
+[32m+[m[32m  // Method for Transfer amount using ATM card[m
+[32m+[m[41m     [m
+[32m+[m[32m     public String transferUsingATM(TransferByATM atm) {[m
+[32m+[m[41m     	[m
+[32m+[m[32m         // Retrieve the bank account using the ATM number[m
+[32m+[m[41m     [m	[32m Optional<Bank> optionalBank = repo.findByAtmNumber(atm.getAtmNumber());[m
+[32m+[m
+[32m+[m[32m         if (optionalBank.isPresent()) {[m
+[32m+[m[32m             Bank bank = optionalBank.get();[m
+[32m+[m
+[32m+[m[32m             // Validate the PIN entered by the user[m
+[32m+[m[32m             if ((bank.getPin() == atm.getPin())&&(atm.getPin() > 1000 || atm.getPin() < 9999)) {[m[41m [m
+[32m+[m[41m             	[m
+[32m+[m[41m            	 [m
+[32m+[m[32m                 TransferAmount transfer = new TransferAmount();[m
+[32m+[m[32m                 transfer.setFromAccountNumber(bank.getAccountNumber());[m
+[32m+[m[32m                 transfer.setName(bank.getName());[m
+[32m+[m[32m                 transfer.setMobileNumber(bank.getMobileNumber());[m
+[32m+[m[32m                 transfer.setToAccountNumber(atm.getToAccountNumber());[m
+[32m+[m[32m                 transfer.setAmount(atm.getAmount()); // Set the amount to transfer[m
+[32m+[m[41m                 [m
+[32m+[m[32m                 // Call the Transfer  method and return the message[m
+[32m+[m[41m                 [m
+[32m+[m[32m                 return transferMoney(transfer);[m[41m [m
+[32m+[m[32m             }[m
+[32m+[m[32m             else {[m
+[32m+[m[32m                 return "Invalid PIN. Please try again.";[m
+[32m+[m[32m             }[m
+[32m+[m[32m         }[m[41m [m
+[32m+[m[32m         else {[m
+[32m+[m[32m             return "Account with the given ATM number does not exist.";[m
+[32m+[m[32m         }[m
+[32m+[m[32m     }[m
+[32m+[m
+[32m+[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/main/java/com/uday/service/Demo.java b/src/main/java/com/uday/service/Demo.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..7e5ffaa[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/service/Demo.java[m
+[36m@@ -0,0 +1,35 @@[m
+[32m+[m[32mpackage com.uday.service;[m
+[32m+[m
+[32m+[m[32mimport java.util.List;[m
+[32m+[m
+[32m+[m[32mimport org.springframework.beans.factory.annotation.Autowired;[m
+[32m+[m[32mimport org.springframework.stereotype.Service;[m
+[32m+[m
+[32m+[m[32mimport com.uday.model.Bank;[m
+[32m+[m[32mimport com.uday.repo.BankRepo;[m
+[32m+[m
+[32m+[m[32m@Service[m
+[32m+[m[32mpublic class Demo {[m
+[32m+[m[41m	[m
+[32m+[m	[32m @Autowired[m
+[32m+[m	[32m    private BankRepo repo;[m[41m [m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[32m    // Method to get One Account Holder Details[m
+[32m+[m[41m    [m
+[32m+[m[32m    public Bank getOneHolder(long acno) {[m
+[32m+[m[41m    	[m
+[32m+[m[41m    [m	[32mreturn repo.findById(acno).get();[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m    // Method to get All Account Holders Details[m
+[32m+[m[41m    [m
+[32m+[m[32m    public List<Bank> getAllAccountHolders() {[m
+[32m+[m[41m    	[m
+[32m+[m[41m    [m	[32mreturn repo.findAll();[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/java/com/uday/utility/AccountNumberGenerator.java b/src/main/java/com/uday/utility/AccountNumberGenerator.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..a06984b[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/java/com/uday/utility/AccountNumberGenerator.java[m
+[36m@@ -0,0 +1,49 @@[m
+[32m+[m[32mpackage com.uday.utility;[m
+[32m+[m
+[32m+[m[32mimport java.util.Random;[m
+[32m+[m
+[32m+[m[32mpublic class AccountNumberGenerator {[m
+[32m+[m
+[32m+[m[32m       // Method to generate a 10-digit number starting with 9963[m
+[32m+[m[32m        public static long generateAccountNumber() {[m
+[32m+[m[32m        String startwith = "9963";  // Fixed starting number[m
+[32m+[m[32m        Random random = new Random();[m
+[32m+[m
+[32m+[m[32m        // Generate a random number that will complete the account number to 10 digits[m
+[32m+[m[32m        int randomNumber = random.nextInt(1000000);  // Random number between 0 and 9999999[m
+[32m+[m[41m        [m
+[32m+[m[32m        // Combine the StartWith and random number to form a 10-digit number[m
+[32m+[m[32m        String accountNumberStr = startwith + String.format("%06d", randomNumber);[m[41m [m
+[32m+[m[41m        [m
+[32m+[m[32m        /* Ensures six digits, pads with 0 if necessary[m
+[32m+[m[32m         *[m[41m [m
+[32m+[m[32m         * "%06d": This is a format specifier.[m
+[32m+[m[32m           %: Indicates the start of a format specifier.[m
+[32m+[m[32m           0: This means to pad the output with leading zeros.[m
+[32m+[m[32m           6: This indicates the total width of the output. In this case, it means that the resulting string should be at least 6 characters long.[m
+[32m+[m[32m           d: This stands for "decimal integer," meaning the input (randomNumber) is treated as an integer.[m
+[32m+[m[41m           [m
+[32m+[m[41m           [m
+[32m+[m[32m         */[m
+[32m+[m[41m        [m
+[32m+[m[32m        return Long.parseLong(accountNumberStr);  // Convert the string to long[m
+[32m+[m[32m    }[m
+[32m+[m[41m        [m
+[32m+[m[41m        [m
+[32m+[m[32m       // method for generate ATM Card Number[m
+[32m+[m[41m        [m
+[32m+[m[32m        public static long atmNumberGenarater() {[m
+[32m+[m[41m        	[m
+[32m+[m[41m        [m	[32m String startWith = "8500";  // Fixed starting number[m
+[32m+[m[41m        [m	[32m    Random atm = new Random();[m
+[32m+[m
+[32m+[m[41m        [m	[32m    // Generate two 4-digit random numbers[m
+[32m+[m[41m        [m	[32m    int middleDigits = atm.nextInt(10000); // Generates a 4-digit number (0 to 9999)[m
+[32m+[m[41m        [m	[32m    int lastDigits = atm.nextInt(10000);   // Generates another 4-digit number (0 to 9999)[m
+[32m+[m
+[32m+[m[41m        [m	[32m    // Format numbers as 4 digits, padding with zeros if necessary[m
+[32m+[m[41m        [m	[32m    String atmNumber = startWith + String.format("%04d", middleDigits) + String.format("%04d", lastDigits);[m
+[32m+[m
+[32m+[m[41m        [m	[32m    return Long.parseLong(atmNumber);  // Convert the string to long[m
+[32m+[m[32m        }[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/main/resources/application.properties b/src/main/resources/application.properties[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f1d45fc[m
+[1m--- /dev/null[m
+[1m+++ b/src/main/resources/application.properties[m
+[36m@@ -0,0 +1,32 @@[m
+[32m+[m[32mspring.application.name=bank-application[m
+[32m+[m[32mserver.port:9000[m
+[32m+[m
+[32m+[m[32mspring.mvc.view.prefix=/views/[m
+[32m+[m[32mspring.mvc.view.suffix=.jsp[m
+[32m+[m
+[32m+[m[32m# Database related properties[m
+[32m+[m[32mspring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver[m
+[32m+[m[32mspring.datasource.url=jdbc:mysql://localhost:3306/udaydb?useSSL=false&serverTimezone=UTC[m
+[32m+[m[32mspring.datasource.username=root[m
+[32m+[m[32mspring.datasource.password=root[m
+[32m+[m
+[32m+[m[32m# Jpa properties/ HB related properties[m
+[32m+[m[32mspring.jpa.show-sql=true[m
+[32m+[m[32mspring.jpa.properties.hibernate.format_sql=true[m
+[32m+[m[32mspring.jpa.hibernate.ddl-auto=update[m
+[32m+[m[32mspring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect[m
+[32m+[m
+[32m+[m[32m# mail related properties[m
+[32m+[m[32mspring.mail.host=smtp.gmail.com[m
+[32m+[m[32mspring.mail.port=587[m
+[32m+[m[32mspring.mail.username=badikallaudaykiran@gmail.com[m
+[32m+[m[32mspring.mail.password=sety zflo vbxj lvmy[m
+[32m+[m[32mspring.mail.properties.mail.smtp.auth=true[m
+[32m+[m[32mspring.mail.properties.mail.smtp.starttls.enable=true[m
+[32m+[m
+[32m+[m[32m#twilio[m
+[32m+[m
+[32m+[m[32mtwilio.account.sid=AC7edd8de697df08ebe2bfac4d7b73abb2[m
+[32m+[m[32mtwilio.auth.token=efcaf62c69e812987d45c3a96741e3b5[m
+[32m+[m[32mtwilio.phone.number=+18156008285[m
+[32m+[m
+[1mdiff --git a/src/test/java/com/uday/BankApplicationTests.java b/src/test/java/com/uday/BankApplicationTests.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f0a531b[m
+[1m--- /dev/null[m
+[1m+++ b/src/test/java/com/uday/BankApplicationTests.java[m
+[36m@@ -0,0 +1,13 @@[m
+[32m+[m[32mpackage com.uday;[m
+[32m+[m
+[32m+[m[32mimport org.junit.jupiter.api.Test;[m
+[32m+[m[32mimport org.springframework.boot.test.context.SpringBootTest;[m
+[32m+[m
+[32m+[m[32m@SpringBootTest[m
+[32m+[m[32mclass BankApplicationTests {[m
+[32m+[m
+[32m+[m	[32m@Test[m
+[32m+[m	[32mvoid contextLoads() {[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m[32m}[m
