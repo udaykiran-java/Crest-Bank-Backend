@@ -57,8 +57,11 @@ SMS for OTPs: OTPs are sent to the registered mobile number via Twilio for secur
 Create Bank Account:
 
 Endpoint: /register
+
 Method: POST
+
 Description: Create a new bank account for a customer.
+
 Validations: Ensures that all required account fields are provided, including name, address, and contact details.
 
 
