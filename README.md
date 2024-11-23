@@ -54,7 +54,7 @@ SMS for OTPs: OTPs are sent to the registered mobile number via Twilio for secur
 
 **Account Management:**
 
-Create Bank Account:
+**Create Bank Account:**
 
 Endpoint: /register
 
@@ -65,128 +65,211 @@ Description: Create a new bank account for a customer.
 Validations: Ensures that all required account fields are provided, including name, address, and contact details.
 
 
-Update Account:
+
+**Update Account:**
+
 Endpoint: /update
+
 Method: POST
+
 Description: Update details for an existing bank account.
+
 Validations: Verifies that the provided account information is correct.
 
 
-Get One Account Holder:
+**Get One Account Holder:**
+
 Endpoint: /getone/{acno}
+
 Method: GET
+
 Description: Retrieve a specific account holder's information based on the account number.
+
 Validations: Verifies that the account exists before returning the details.
 
 
-Get All Account Holders:
+
+**Get All Account Holders:**
+
 Endpoint: /getall
+
 Method: GET
+
 Description: Retrieve all account holders in the system.
+
 Validations: N/A (Returns the list of all accounts).
 
 
 **Transactions and Account Operations**
 
-Withdraw Amount:
+**Withdraw Amount:**
+
 Endpoint: /withdraw
+
 Method: POST
+
 Description: Withdraw money from the bank account.
+
 Validations: Verifies the account balance and PIN.
-Deposit Amount:
+
+
+**Deposit Amount:**
 
 Endpoint: /deposit
+
 Method: POST
+
 Description: Deposit funds into a bank account.
+
 Validations: Verifies the PIN and processes the deposit.
-Balance Enquiry:
+
+
+**Balance Enquiry:**
 
 Endpoint: /checkbalance
+
 Method: POST
+
 Description: Check the balance of a specific account.
+
 Validations: Verifies the user's PIN before showing the balance.
-Transfer Amount:
+
+
+**Transfer Amount:**
 
 Endpoint: /transfer
+
 Method: POST
+
 Description: Transfer funds from one account to another.
+
 Validations: Verifies the account balance, recipient account, and user PIN.
-Transaction Statement:
+
+
+**Transaction Statement:**
 
 Endpoint: /statement
+
 Method: POST
+
 Description: Retrieve the full transaction statement for an account.
+
 Validations: Verifies account details before generating the statement.
-Generate Mini Statement:
+
+
+**Generate Mini Statement:**
 
 Endpoint: /ministatement
+
 Method: POST
+
 Description: Retrieve a mini statement showing the last few transactions.
+
 Validations: Verifies account details before generating the mini statement.
 
 
 **ATM Card Operations:**
 
-Apply for ATM Card:
+**Apply for ATM Card:**
+
 Endpoint: /applyatm
+
 Method: POST
+
 Description: Apply for an ATM card linked to your bank account.
+
 Validations: Verifies account holder’s name and mobile number.
 
-Cancel ATM Card:
+
+**Cancel ATM Card:**
+
 Endpoint: /cancelatm
+
 Method: POST
+
 Description: Cancel your existing ATM card.
+
 Validations: Verifies the account holder's name, mobile number, and that an ATM card exists.
 
 
-Set ATM PIN:
+**Set ATM PIN:**
+
 Endpoint: /set-pin
+
 Method: POST
+
 Description: Set a new ATM PIN after validating the OTP sent to the user.
+
 Validations: OTP validation and PIN format validation.
 
 
-Send OTP for ATM PIN Setup:
+**Send OTP for ATM PIN Setup:**
+
 Endpoint: /send-otp
+
 Method: POST
+
 Description: Generate and send an OTP to the registered mobile number for ATM PIN setup.
+
 Validations: Verifies the account details before sending the OTP.
+
+
 
 **ATM Transactions:**
 
-Withdraw Using ATM:
+
+**Withdraw Using ATM:**
+
 Endpoint: /withdrawATM
+
 Method: POST
+
 Description: Withdraw money from your account using your ATM card.
+
 Validations: Verifies user’s PIN and checks for sufficient balance.
 
 
-Deposit Using ATM:
+**Deposit Using ATM:**
+
 Endpoint: /depositATM
+
 Method: POST
+
 Description: Deposit money into your bank account using your ATM card.
+
 Validations: Verifies user’s PIN and processes deposit.
 
 
-Transfer Using ATM:
+**Transfer Using ATM:**
+
 Endpoint: /transferATM
+
 Method: POST
+
 Description: Transfer funds from your account to another account using your ATM card.
+
 Validations: Verifies the PIN and ensures sufficient funds for the transfer.
 
 
-Balance Enquiry Using ATM:
+**Balance Enquiry Using ATM:**
+
 Endpoint: /balanceATM
+
 Method: GET
+
 Description: Check the balance of your account using ATM credentials.
+
 Validations: Verifies the PIN to ensure secure access.
 
 
-Mini Statement Using ATM:
+**Mini Statement Using ATM:**
+
 Endpoint: /miniStatementATM
+
 Method: GET
+
 Description: Generate a mini statement of recent transactions.
+
 Validations: Verifies the PIN to ensure only the authorized user can access the statement.
 
 
