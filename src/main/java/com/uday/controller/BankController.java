@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uday.dto.ApplyATM;
@@ -32,11 +31,12 @@ public class BankController {
 
 	 @Autowired
 	    private BankService bankService;
-
+// demo
 	    // EndPoint to create a new bank account
 	 
 	    @PostMapping("/register")
 	    public ResponseEntity<?> createBankAccount(@RequestBody Bank bank) {
+	    	
 	        try {
 	            Bank createdBank = bankService.createBankAccount(bank);
 	            return ResponseEntity.ok(createdBank);
