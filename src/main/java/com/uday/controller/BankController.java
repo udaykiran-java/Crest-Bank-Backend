@@ -31,7 +31,6 @@ public class BankController {
 
 	 @Autowired
 	    private BankService bankService;
-// demo
 	    // EndPoint to create a new bank account
 	 
 	    @PostMapping("/register")
